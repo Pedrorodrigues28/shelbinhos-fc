@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shelbinhos FC</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+<header class="topo">
+
+    <a href="index.html" class="marca">
+
+        <img
+            src="imagens/escudo/escudo.png"
+            alt="Escudo do Shelbinhos FC"
+            class="mini-escudo-img"
+        >
+
+        <div>
+            <strong>Shelbinhos FC</strong>
+            <small>EST. 2026</small>
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html" class="ativo">
+            Início
+        </a>
+
+        <a href="loja.html">
+            Loja
+        </a>
+
+        <a href="jogadores.html">
+            Elenco
+        </a>
+        
+        <a
+    href="highlights.html"
+    class="destaque-emoji"
+    title="Highlights"
+>
+    😈
+</a>
+
+        <a href="carrinho.html">
+            Carrinho
+            <span class="cart-count">0</span>
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-conteudo">
+
+            <p class="sobrelinha">
+                SHELBINHOS FOOTBALL CLUB
+            </p>
+
+            <h1>
+                Mais que um time.
+                <span>Uma família.</span>
+            </h1>
+
+            <p class="hero-texto">
+                Futebol, amizade e identidade. O Shelbinhos FC nasceu
+                entre amigos e aos poucos está construindo sua própria
+                história dentro e fora das quatro linhas.
+            </p>
+
+            <div class="hero-botoes">
+
+                <a href="loja.html" class="botao">
+                    Loja oficial
+                </a>
+
+                <a href="jogadores.html" class="botao botao-vazado">
+                    Conheça o elenco
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-emblema">
+
+            <img
+                src="imagens/escudo/escudo.png"
+                alt="Escudo oficial do Shelbinhos FC"
+                class="escudo-principal"
+            >
+
+        </div>
+
+    </section>
+
+
+    <section class="secao">
+
+        <div class="titulo-secao">
+
+            <p>NOSSA HISTÓRIA</p>
+
+            <h2>O clube</h2>
+
+        </div>
+
+
+        <div class="historia">
+
+            <div>
+
+                <p>
+                    O Shelbinhos FC surgiu da amizade e da paixão pelo futebol.
+                    O que começou como um grupo de amigos entrando em campo
+                    ganhou nome, uniforme, escudo e uma identidade própria.
+                </p>
+
+                <p>
+                    Cada partida, cada jogador e cada momento ajudam a construir
+                    essa história. Nosso objetivo é continuar evoluindo o clube,
+                    mantendo a amizade e a resenha que deram origem a tudo.
+                </p>
+
+                <p>
+                    Fora de campo, também queremos construir uma presença própria,
+                    com nossa loja, nossos uniformes, conteúdos e tudo que
+                    representa o Shelbinhos FC.
+                </p>
+
+            </div>
+
+
+            <blockquote>
+                “Por ordem dos Shelbinhos.”
+            </blockquote>
+
+        </div>
+
+    </section>
+
+
+    <section class="secao secao-escura">
+
+        <div class="titulo-secao">
+
+            <p>SHELBINHOS STORE</p>
+
+            <h2>Vista nossas cores</h2>
+
+        </div>
+
+
+        <div class="produtos-grid">
+
+            <article class="produto-card">
+
+                <div
+                    class="produto-imagem"
+                    style="background-image: url('imagens/produtos/uniforme1.png');"
+                >
+                    <span>UNIFORME 01</span>
+                </div>
+
+                <div class="produto-info">
+
+                    <p class="categoria">
+                        Uniforme oficial
+                    </p>
+
+                    <h3>
+                        Uniforme 1 — Preto
+                    </h3>
+
+                    <p class="descricao">
+                        O uniforme principal do Shelbinhos FC.
+                    </p>
+
+                    <p class="preco">
+                        R$ 89,90
+                    </p>
+
+                    <button
+                        onclick="adicionarAoCarrinho(
+                            'Uniforme 1 — Preto',
+                            89.90,
+                            'imagens/produtos/uniforme1.png'
+                        )"
+                    >
+                        Adicionar ao carrinho
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="produto-card">
+
+                <div
+                    class="produto-imagem"
+                    style="background-image: url('imagens/produtos/uniforme2.png');"
+                >
+                    <span>UNIFORME 02</span>
+                </div>
+
+                <div class="produto-info">
+
+                    <p class="categoria">
+                        Uniforme oficial
+                    </p>
+
+                    <h3>
+                        Uniforme 2 — Branco
+                    </h3>
+
+                    <p class="descricao">
+                        A segunda opção oficial do Shelbinhos FC.
+                    </p>
+
+                    <p class="preco">
+                        R$ 89,90
+                    </p>
+
+                    <button
+                        onclick="adicionarAoCarrinho(
+                            'Uniforme 2 — Branco',
+                            89.90,
+                            'imagens/produtos/uniforme2.png'
+                        )"
+                    >
+                        Adicionar ao carrinho
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div class="centro">
+
+            <a href="loja.html" class="botao">
+                Entrar na loja
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section class="secao chamada-elenco">
+
+        <p class="sobrelinha">
+            OS HOMENS DO CLUBE
+        </p>
+
+        <h2>
+            Conheça quem veste
+            <span>o escudo.</span>
+        </h2>
+
+        <p>
+            Veja os jogadores que fazem parte do Shelbinhos FC.
+        </p>
+
+        <a href="jogadores.html" class="botao botao-vazado">
+            Ver elenco
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div>
+
+        <img
+            src="imagens/escudo/escudo.png"
+            alt="Shelbinhos FC"
+            class="footer-escudo"
+        >
+
+        <h3>Shelbinhos FC</h3>
+
+        <p>
+            Futebol, amizade e tradição.
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 Shelbinhos FC
+    </p>
+
+</footer>
+
+
+<div id="toast">
+    Produto adicionado ao carrinho.
+</div>
+
+</body>
+
+</html>
+<section class="secao highlights">
+
+    <div class="titulo-secao">
+        <p>MELHORES MOMENTOS</p>
+        <h2>Highlights</h2>
+    </div>
+
+    <div class="video-container">
+
+        <video controls>
+            <source src="videos/shelbinhos.mp4" type="video/mp4">
+
+            Seu navegador não suporta este vídeo.
+        </video>
+
+    </div>
+
+</section>
