@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Minha conta | Shelbinhos FC</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<header class="topo">
+
+    <a
+        href="index.html"
+        class="marca"
+    >
+
+        <img
+            src="imagens/escudo/escudo.png"
+            alt="Escudo do Shelbinhos FC"
+            class="mini-escudo-img"
+        >
+
+        <div>
+
+            <strong>
+                Shelbinhos FC
+            </strong>
+
+            <small>
+                EST. 2026
+            </small>
+
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="loja.html">
+            Loja
+        </a>
+
+        <a href="jogadores.html">
+            Elenco
+        </a>
+
+        <a
+            href="destaques.html"
+            class="destaque-emoji"
+            title="Highlights"
+        >
+            😈
+        </a>
+
+        <a href="carrinho.html">
+
+            Carrinho
+
+            <span class="cart-count">
+                0
+            </span>
+
+        </a>
+
+        <a
+            href="perfil.html"
+            class="auth-menu-link ativo"
+        >
+            Minha conta
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="auth-page">
+
+    <section class="perfil-box">
+
+        <p class="auth-mini-title">
+            SHELBINHOS FC
+        </p>
+
+
+        <h1 id="perfil-nome">
+            Carregando...
+        </h1>
+
+
+        <p class="perfil-subtitulo">
+            Sua conta no Shelbinhos FC
+        </p>
+
+
+        <div class="perfil-dados">
+
+            <div class="perfil-item">
+
+                <span>
+                    E-mail
+                </span>
+
+                <strong id="perfil-email">
+                    Carregando...
+                </strong>
+
+            </div>
+
+
+            <div class="perfil-item">
+
+                <span>
+                    Membro desde
+                </span>
+
+                <strong id="perfil-data">
+                    Carregando...
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="perfil-form">
+
+            <div class="input-group">
+
+                <label for="perfil-nome-input">
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="perfil-nome-input"
+                    placeholder="Seu nome"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="perfil-username">
+                    Nome de usuário
+                </label>
+
+                <input
+                    type="text"
+                    id="perfil-username"
+                    placeholder="Ex: pedro28"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+    <label for="perfil-favorito">
+        Jogador favorito
+    </label>
+
+    <select id="perfil-favorito">
+
+        <option value="">
+            Escolha um jogador
+        </option>
+
+        <option value="Rodrigues">
+            Rodrigues
+        </option>
+
+        <option value="Gambeta">
+            Gambeta
+        </option>
+
+        <option value="Exu">
+            Exu
+        </option>
+
+        <option value="Bezerra">
+            Bezerra
+        </option>
+
+        <option value="Collin">
+            Collin
+        </option>
+
+    </select>
+
+</div>
+
+
+<div class="favorito-preview">
+
+    <p class="favorito-titulo">
+        JOGADOR FAVORITO
+    </p>
+
+    <div class="favorito-card">
+
+        <img
+            id="perfil-favorito-foto"
+            src="imagens/escudo/escudo.png"
+            alt="Jogador favorito"
+        >
+
+        <div>
+
+            <span>
+                SHELBINHOS FC
+            </span>
+
+            <strong id="perfil-favorito-nome">
+                Nenhum selecionado
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+            <button
+                type="button"
+                id="btn-salvar-perfil"
+                class="auth-botao"
+            >
+                Salvar perfil
+            </button>
+
+
+            <p id="mensagem-perfil"></p>
+
+        </div>
+
+
+        <button
+            id="btn-logout"
+            class="botao-logout"
+        >
+            Sair da conta
+        </button>
+
+    </section>
+
+</main>
+
+
+<script src="js/script.js"></script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/auth.js"></script>
+
+</body>
+
+</html>

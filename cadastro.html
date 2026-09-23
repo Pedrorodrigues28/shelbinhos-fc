@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Criar conta | Shelbinhos FC</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+
+<body>
+
+<header class="topo">
+
+    <a
+        href="index.html"
+        class="marca"
+    >
+
+        <img
+            src="imagens/escudo/escudo.png"
+            alt="Escudo do Shelbinhos FC"
+            class="mini-escudo-img"
+        >
+
+        <div>
+
+            <strong>
+                Shelbinhos FC
+            </strong>
+
+            <small>
+                EST. 2026
+            </small>
+
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="loja.html">
+            Loja
+        </a>
+
+        <a href="jogadores.html">
+            Elenco
+        </a>
+
+        <a
+            href="destaques.html"
+            class="destaque-emoji"
+            title="Highlights"
+        >
+            😈
+        </a>
+
+        <a href="carrinho.html">
+
+            Carrinho
+
+            <span class="cart-count">
+                0
+            </span>
+
+        </a>
+
+        <a
+            href="login.html"
+            class="auth-menu-link"
+        >
+            Entrar
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="auth-page">
+
+    <section class="auth-container">
+
+        <div class="auth-box">
+
+            <p class="auth-mini-title">
+                SHELBINHOS FC
+            </p>
+
+            <h1>
+                Criar conta
+            </h1>
+
+            <p class="auth-descricao">
+                Crie sua conta para fazer parte
+                do universo do Shelbinhos FC.
+            </p>
+
+
+            <form
+                id="form-cadastro"
+                class="auth-form"
+            >
+
+                <div class="input-group">
+
+                    <label for="nome">
+                        Nome
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Seu nome"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="seuemail@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Mínimo de 6 caracteres"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="confirmar-senha">
+                        Confirmar senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmar-senha"
+                        placeholder="Digite novamente"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-botao"
+                >
+                    Criar conta
+                </button>
+
+            </form>
+
+
+            <p id="mensagem-auth"></p>
+
+
+            <p class="auth-link">
+
+                Já possui uma conta?
+
+                <a href="login.html">
+                    Entrar
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="js/script.js"></script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/auth.js"></script>
+
+</body>
+
+</html>
