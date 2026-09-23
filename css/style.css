@@ -1452,4 +1452,26 @@ footer h3 {
     background: #141414;
 
     color: white;
+}/* TAMANHO DO JOGADOR FAVORITO */
+
+.favorito-card {
+    padding: 16px 18px;
+    gap: 20px;
+    align-items: center;
+}
+
+.favorito-card img {
+    width: 260px;
+    height: 260px;
+
+    object-fit: contain;
+    object-position: center;
+
+    border-radius: 10px;
+}
+
+.favorito-card strong {
+    font-size: 26px;
+}.favorito-card {
+    align-items: center;
 }
