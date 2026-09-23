@@ -1,0 +1,1485 @@
+/* ==================================================
+   ICE NUGGETS
+   CONCEITO NÃO OFICIAL
+   Rodrigues • Desenvolvedor em formação
+================================================== */
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --preto: #050706;
+    --preto-2: #090c0a;
+    --preto-3: #101512;
+
+    --verde: #2fa866;
+    --verde-claro: #56c982;
+    --verde-escuro: #1e7147;
+
+    --branco: #f3f5f4;
+
+    --cinza: #929b95;
+    --cinza-2: #626b65;
+
+    --borda:
+        rgba(
+            71,
+            183,
+            113,
+            0.18
+        );
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 90% 8%,
+            rgba(47, 168, 102, 0.14),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 10% 70%,
+            rgba(47, 168, 102, 0.06),
+            transparent 30%
+        ),
+        var(--preto);
+
+    color: var(--branco);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.topo {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+
+    min-height: 76px;
+
+    padding:
+        0
+        6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    background:
+        rgba(
+            5,
+            7,
+            6,
+            0.90
+        );
+
+    backdrop-filter:
+        blur(15px);
+
+    border-bottom:
+        1px solid
+        var(--borda);
+}
+
+
+.voltar {
+    color: #abb3ae;
+
+    text-decoration: none;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    transition: 0.2s;
+}
+
+
+.voltar:hover {
+    color:
+        var(--verde-claro);
+}
+
+
+.tag-conceito {
+    padding:
+        8px
+        13px;
+
+    color:
+        var(--verde-claro);
+
+    border:
+        1px solid
+        rgba(
+            86,
+            201,
+            130,
+            0.28
+        );
+
+    font-size: 8px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    width:
+        min(
+            1350px,
+            92%
+        );
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding:
+        125px
+        0
+        70px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        0.9fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+
+.sobrelinha {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 22px;
+
+    color:
+        var(--verde-claro);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+.sobrelinha::before {
+    content: "";
+
+    width: 45px;
+    height: 1px;
+
+    background:
+        var(--verde);
+}
+
+
+.hero h1 {
+    font-size:
+        clamp(
+            68px,
+            9vw,
+            126px
+        );
+
+    line-height: 0.80;
+
+    letter-spacing: -5px;
+
+    font-weight: 900;
+}
+
+
+.hero h1 span {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px
+        var(--verde-claro);
+}
+
+
+.hero-texto > p {
+    max-width: 620px;
+
+    margin-top: 35px;
+
+    color:
+        var(--cinza);
+
+    font-size: 15px;
+
+    line-height: 1.9;
+}
+
+
+.hero-botoes {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+.botao {
+    min-height: 50px;
+
+    padding:
+        0
+        23px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        var(--verde);
+
+    color: #041008;
+
+    border:
+        1px solid
+        var(--verde);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        border-color 0.2s;
+}
+
+
+.botao:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        var(--verde-claro);
+
+    border-color:
+        var(--verde-claro);
+}
+
+
+.botao-vazado {
+    background: transparent;
+
+    color:
+        var(--verde-claro);
+
+    border-color:
+        rgba(
+            86,
+            201,
+            130,
+            0.30
+        );
+}
+
+
+.botao-vazado:hover {
+    background:
+        rgba(
+            47,
+            168,
+            102,
+            0.08
+        );
+
+    color:
+        var(--verde-claro);
+}
+
+
+/* =========================================
+   HERO VISUAL
+========================================= */
+
+.hero-visual {
+    position: relative;
+
+    min-height: 640px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+}
+
+
+.hero-bloco {
+    position: absolute;
+
+    inset:
+        70px
+        30px
+        10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                47,
+                168,
+                102,
+                0.16
+            ),
+            rgba(
+                5,
+                7,
+                6,
+                0.08
+            )
+        );
+
+    border:
+        1px solid
+        rgba(
+            86,
+            201,
+            130,
+            0.17
+        );
+
+    transform:
+        skewY(-3deg);
+}
+
+
+.foto-dona {
+    position: relative;
+
+    z-index: 2;
+
+    width: 92%;
+
+    height: 585px;
+
+    object-fit: cover;
+
+    object-position:
+        center center;
+
+    border-bottom:
+        3px solid
+        var(--verde);
+
+    filter:
+        contrast(1.04)
+        saturate(0.91);
+}
+
+
+.hero-visual::after {
+    content: "";
+
+    position: absolute;
+
+    z-index: 3;
+
+    left: 4%;
+    right: 4%;
+    bottom: 0;
+
+    height: 42%;
+
+    background:
+        linear-gradient(
+            to top,
+            var(--preto),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+
+/* ESCUDO */
+
+.escudo-destaque {
+    position: absolute;
+
+    z-index: 5;
+
+    left: -20px;
+
+    bottom: 45px;
+
+    width: 165px;
+    height: 165px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(
+            5,
+            7,
+            6,
+            0.94
+        );
+
+    border:
+        1px solid
+        rgba(
+            86,
+            201,
+            130,
+            0.27
+        );
+
+    box-shadow:
+        0
+        22px
+        60px
+        rgba(
+            0,
+            0,
+            0,
+            0.50
+        );
+}
+
+
+.escudo-destaque img {
+    width: 130px;
+    height: 130px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   MENSAGEM
+========================================= */
+
+.mensagem {
+    border-top:
+        1px solid
+        var(--borda);
+
+    border-bottom:
+        1px solid
+        var(--borda);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(
+                47,
+                168,
+                102,
+                0.025
+            ),
+            transparent
+        );
+}
+
+
+.mensagem-container {
+    width:
+        min(
+            1150px,
+            92%
+        );
+
+    margin: 0 auto;
+
+    padding:
+        120px
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        0.85fr
+        1.15fr;
+
+    gap: 100px;
+}
+
+
+.mensagem-titulo span {
+    color:
+        var(--verde);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+.mensagem-titulo h2 {
+    margin-top: 13px;
+
+    max-width: 450px;
+
+    font-size:
+        clamp(
+            40px,
+            5vw,
+            63px
+        );
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+
+.mensagem-texto p {
+    margin-bottom: 22px;
+
+    color:
+        var(--cinza);
+
+    font-size: 15px;
+
+    line-height: 1.9;
+}
+
+
+.mensagem-texto
+.mensagem-destaque {
+    margin:
+        35px
+        0
+        0;
+
+    padding-left: 25px;
+
+    color:
+        var(--branco);
+
+    border-left:
+        2px solid
+        var(--verde);
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CAMINHO
+========================================= */
+
+.caminho {
+    width:
+        min(
+            1250px,
+            92%
+        );
+
+    margin: 0 auto;
+
+    padding:
+        120px
+        0;
+}
+
+
+.secao-topo {
+    max-width: 720px;
+
+    margin-bottom: 55px;
+}
+
+
+.secao-topo span {
+    color:
+        var(--verde);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+.secao-topo h2 {
+    margin-top: 10px;
+
+    font-size:
+        clamp(
+            38px,
+            5vw,
+            62px
+        );
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+
+.caminho-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr
+        auto
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.passo {
+    min-height: 210px;
+
+    padding: 28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0f1411,
+            #080a09
+        );
+
+    border:
+        1px solid
+        var(--borda);
+
+    transition:
+        transform 0.25s,
+        border-color 0.25s;
+}
+
+
+.passo:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(
+            86,
+            201,
+            130,
+            0.45
+        );
+}
+
+
+.passo > span {
+    margin-bottom: auto;
+
+    color:
+        rgba(
+            86,
+            201,
+            130,
+            0.40
+        );
+
+    font-size: 35px;
+
+    font-weight: 900;
+}
+
+
+.passo h3 {
+    margin-bottom: 8px;
+
+    font-size: 18px;
+}
+
+
+.passo p {
+    color:
+        var(--cinza);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.seta {
+    color:
+        var(--verde-escuro);
+
+    font-size: 26px;
+}
+
+
+/* =========================================
+   FRASE
+========================================= */
+
+.frase {
+    min-height: 500px;
+
+    padding:
+        90px
+        20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                47,
+                168,
+                102,
+                0.11
+            ),
+            transparent 45%
+        ),
+        var(--preto-2);
+
+    border-top:
+        1px solid
+        var(--borda);
+
+    border-bottom:
+        1px solid
+        var(--borda);
+}
+
+
+.frase img {
+    width: 130px;
+    height: 130px;
+
+    margin-bottom: 35px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0
+            15px
+            35px
+            rgba(
+                47,
+                168,
+                102,
+                0.16
+            )
+        );
+}
+
+
+.frase blockquote {
+    max-width: 900px;
+
+    color:
+        #d9dfdb;
+
+    font-size:
+        clamp(
+            23px,
+            3vw,
+            37px
+        );
+
+    font-weight: bold;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CONTATO
+========================================= */
+
+.contato {
+    width:
+        min(
+            1000px,
+            92%
+        );
+
+    margin: 0 auto;
+
+    padding:
+        120px
+        0;
+}
+
+
+.contato-caixa {
+    padding:
+        65px
+        50px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(
+                47,
+                168,
+                102,
+                0.10
+            ),
+            transparent 55%
+        ),
+        var(--preto-2);
+
+    border:
+        1px solid
+        var(--borda);
+}
+
+
+.contato-sobrelinha {
+    color:
+        var(--verde);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+.contato h2 {
+    margin:
+        10px
+        0
+        15px;
+
+    font-size:
+        clamp(
+            38px,
+            5vw,
+            58px
+        );
+}
+
+
+.contato p {
+    max-width: 600px;
+
+    margin:
+        0
+        auto;
+
+    color:
+        var(--cinza);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+.discord {
+    width:
+        min(
+            480px,
+            100%
+        );
+
+    margin:
+        30px
+        auto
+        15px;
+
+    padding:
+        18px;
+
+    background:
+        #050706;
+
+    color:
+        var(--verde-claro);
+
+    border:
+        1px solid
+        rgba(
+            86,
+            201,
+            130,
+            0.28
+        );
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.copiar-discord {
+    border: none;
+}
+
+
+.mensagem-copiado {
+    min-height: 20px;
+
+    margin-top:
+        13px !important;
+
+    color:
+        var(--verde-claro)
+        !important;
+
+    font-size: 10px
+        !important;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   CRÉDITOS
+========================================= */
+
+.creditos {
+    padding:
+        120px
+        20px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                47,
+                168,
+                102,
+                0.09
+            ),
+            transparent 42%
+        );
+}
+
+
+.creditos > span {
+    color:
+        var(--verde);
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 5px;
+}
+
+
+.creditos h2 {
+    margin-top: 15px;
+
+    color:
+        var(--verde-claro);
+
+    font-size:
+        clamp(
+            45px,
+            7vw,
+            82px
+        );
+
+    line-height: 1;
+}
+
+
+.creditos h3 {
+    margin-top: 8px;
+
+    color:
+        #c3cac5;
+
+    font-size: 15px;
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+.linha {
+    width: 70px;
+    height: 1px;
+
+    margin:
+        30px
+        auto;
+
+    background:
+        var(--verde);
+}
+
+
+.creditos p {
+    color:
+        var(--cinza);
+
+    font-size: 13px;
+}
+
+
+.creditos small {
+    display: block;
+
+    max-width: 600px;
+
+    margin:
+        10px
+        auto
+        0;
+
+    color:
+        #545d57;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    min-height: 130px;
+
+    padding:
+        35px
+        6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 30px;
+
+    background:
+        #030403;
+
+    border-top:
+        1px solid
+        var(--borda);
+}
+
+
+.footer-marca {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.footer-marca img {
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+}
+
+
+.footer-marca strong {
+    display: block;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.footer-marca span {
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        var(--verde);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+footer > a {
+    color:
+        #6d7770;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    transition: 0.2s;
+}
+
+
+footer > a:hover {
+    color:
+        var(--verde-claro);
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        grid-template-columns:
+            1fr;
+
+        gap: 30px;
+
+        padding-top:
+            130px;
+    }
+
+
+    .hero-texto {
+        text-align: center;
+    }
+
+
+    .sobrelinha {
+        justify-content: center;
+    }
+
+
+    .hero-botoes {
+        justify-content: center;
+    }
+
+
+    .hero-texto > p {
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .hero-visual {
+        min-height: 550px;
+    }
+
+
+    .foto-dona {
+        height: 510px;
+    }
+
+
+    .mensagem-container {
+        grid-template-columns:
+            1fr;
+
+        gap: 45px;
+    }
+
+
+    .caminho-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .seta {
+        transform:
+            rotate(90deg);
+
+        text-align: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .topo {
+        min-height: 66px;
+
+        padding:
+            0
+            4%;
+    }
+
+
+    .tag-conceito {
+        display: none;
+    }
+
+
+    .hero {
+        width: 90%;
+
+        padding-top:
+            105px;
+    }
+
+
+    .hero h1 {
+        font-size:
+            clamp(
+                57px,
+                20vw,
+                90px
+            );
+
+        letter-spacing:
+            -3px;
+    }
+
+
+    .hero-visual {
+        min-height:
+            470px;
+    }
+
+
+    .foto-dona {
+        width: 100%;
+
+        height: 440px;
+    }
+
+
+    .hero-bloco {
+        inset:
+            45px
+            5px
+            0;
+    }
+
+
+    .escudo-destaque {
+        left: -5px;
+
+        bottom: 25px;
+
+        width: 115px;
+        height: 115px;
+    }
+
+
+    .escudo-destaque img {
+        width: 90px;
+        height: 90px;
+    }
+
+
+    .mensagem-container {
+        padding:
+            80px
+            0;
+    }
+
+
+    .caminho {
+        padding:
+            80px
+            0;
+    }
+
+
+    .frase {
+        min-height: 430px;
+
+        padding:
+            70px
+            25px;
+    }
+
+
+    .frase img {
+        width: 105px;
+        height: 105px;
+    }
+
+
+    .contato {
+        padding:
+            80px
+            0;
+    }
+
+
+    .contato-caixa {
+        padding:
+            45px
+            22px;
+    }
+
+
+    .creditos {
+        padding:
+            90px
+            20px;
+    }
+
+
+    footer {
+        flex-direction:
+            column;
+
+        text-align: center;
+    }
+
+}/* =========================================
+   CONTROLE DE ÁUDIO
+========================================= */
+
+.controle-audio {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 200;
+
+    padding: 11px 14px;
+
+    background:
+        rgba(5, 7, 6, 0.88);
+
+    color: var(--verde-claro);
+
+    border:
+        1px solid
+        rgba(86, 201, 130, 0.30);
+
+    backdrop-filter:
+        blur(10px);
+
+    font-size: 8px;
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.controle-audio:hover {
+    background:
+        rgba(47, 168, 102, 0.12);
+
+    border-color:
+        var(--verde);
+}

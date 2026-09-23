@@ -3,225 +3,1105 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Criar Conta | Shelbinhos FC</title>
 
-    <title>Criar conta | Shelbinhos FC</title>
+    <link rel="stylesheet" href="css/style.css">
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body.cadastro-page {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(157, 128, 81, 0.14),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #17140f 0%,
+                    #080808 35%,
+                    #050505 100%
+                );
+
+            color: #eee9df;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .club-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(7, 7, 7, 0.94);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom:
+                1px solid rgba(176, 141, 87, 0.18);
+        }
+
+
+        .club-nav {
+            width: min(1250px, 92%);
+            min-height: 78px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        .club-marca {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            color: #eee9df;
+
+            text-decoration: none;
+        }
+
+
+        .club-marca img {
+            width: 45px;
+            height: 45px;
+
+            object-fit: contain;
+        }
+
+
+        .club-marca strong {
+            display: block;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 17px;
+            font-weight: normal;
+
+            letter-spacing: 2px;
+        }
+
+
+        .club-marca span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #8b7758;
+
+            font-size: 8px;
+
+            letter-spacing: 3px;
+        }
+
+
+        /* MENU */
+
+        .club-menu {
+            display: flex;
+            align-items: center;
+
+            gap: 23px;
+        }
+
+
+        .club-menu a {
+            color: #99938a;
+
+            text-decoration: none;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.2s;
+        }
+
+
+        .club-menu a:hover,
+        .club-menu a.ativo {
+            color: #c0a16b;
+        }
+
+
+        .club-menu-btn {
+            display: none;
+
+            width: 44px;
+            height: 44px;
+
+            background: transparent;
+
+            color: #c0a16b;
+
+            border: 1px solid #453a2e;
+
+            cursor: pointer;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================
+           CONTEÚDO
+        ========================================= */
+
+        .cadastro-container {
+            width: min(1120px, 92%);
+
+            min-height: calc(100vh - 220px);
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                0.9fr
+                1fr;
+
+            align-items: center;
+
+            gap: 80px;
+
+            padding:
+                75px
+                0
+                100px;
+        }
+
+
+        /* =========================================
+           APRESENTAÇÃO
+        ========================================= */
+
+        .cadastro-apresentacao > span {
+            color: #9d8051;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 5px;
+        }
+
+
+        .cadastro-apresentacao h1 {
+            margin:
+                12px
+                0
+                22px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    46px,
+                    7vw,
+                    76px
+                );
+
+            font-weight: normal;
+
+            line-height: 0.95;
+        }
+
+
+        .cadastro-apresentacao h1 em {
+            display: block;
+
+            color: #b08d57;
+
+            font-style: normal;
+        }
+
+
+        .cadastro-apresentacao p {
+            max-width: 500px;
+
+            margin: 0;
+
+            color: #77736c;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        .cadastro-linha {
+            width: 80px;
+            height: 1px;
+
+            margin:
+                28px
+                0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #b08d57,
+                    transparent
+                );
+        }
+
+
+        .cadastro-frase {
+            max-width: 450px;
+
+            color: #625d56;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 17px;
+
+            font-style: italic;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .cadastro-card {
+            position: relative;
+
+            padding:
+                42px
+                38px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(157, 128, 81, 0.11),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    145deg,
+                    #11100e,
+                    #080808
+                );
+
+            border:
+                1px solid #392f24;
+
+            border-radius: 6px;
+        }
+
+
+        .cadastro-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #9d8051,
+                    #c0a16b,
+                    transparent
+                );
+        }
+
+
+        .cadastro-card-topo {
+            margin-bottom: 30px;
+        }
+
+
+        .cadastro-card-topo > span {
+            color: #9d8051;
+
+            font-size: 9px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+
+        .cadastro-card-topo h2 {
+            margin:
+                8px
+                0
+                7px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 34px;
+            font-weight: normal;
+        }
+
+
+        .cadastro-card-topo p {
+            margin: 0;
+
+            color: #716d66;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           CAMPOS
+        ========================================= */
+
+        .cadastro-campo {
+            margin-bottom: 18px;
+        }
+
+
+        .cadastro-campo label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #9b8b72;
+
+            font-size: 9px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        .cadastro-campo input {
+            width: 100%;
+            height: 50px;
+
+            padding:
+                0
+                15px;
+
+            background: #090909;
+
+            color: #eee9df;
+
+            border:
+                1px solid #332d25;
+
+            border-radius: 3px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .cadastro-campo input::placeholder {
+            color: #4f4c47;
+        }
+
+
+        .cadastro-campo input:focus {
+            background: #0d0c0a;
+
+            border-color: #9d8051;
+        }
+
+
+        /* SENHAS LADO A LADO */
+
+        .cadastro-senhas {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap: 12px;
+        }
+
+
+        /* =========================================
+           BOTÃO
+        ========================================= */
+
+        .cadastro-btn {
+            width: 100%;
+            min-height: 51px;
+
+            margin-top: 8px;
+
+            background: #9d8051;
+
+            color: #090909;
+
+            border:
+                1px solid #9d8051;
+
+            cursor: pointer;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            transition: 0.25s;
+        }
+
+
+        .cadastro-btn:hover {
+            background: #b99a67;
+
+            border-color: #b99a67;
+        }
+
+
+        /* =========================================
+           MENSAGEM AUTH
+        ========================================= */
+
+        #mensagem-auth {
+            min-height: 20px;
+
+            margin:
+                16px
+                0
+                0;
+
+            color: #b8a17d;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            text-align: center;
+        }
+
+
+        /* =========================================
+           LINK LOGIN
+        ========================================= */
+
+        .cadastro-login {
+            margin-top: 25px;
+
+            padding-top: 23px;
+
+            text-align: center;
+
+            border-top:
+                1px solid #29251f;
+        }
+
+
+        .cadastro-login p {
+            margin:
+                0
+                0
+                11px;
+
+            color: #716d66;
+
+            font-size: 11px;
+        }
+
+
+        .cadastro-login a {
+            color: #b08d57;
+
+            text-decoration: none;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .cadastro-login a:hover {
+            color: #d0b17d;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .club-footer {
+            border-top:
+                1px solid #26221c;
+
+            background: #050505;
+        }
+
+
+        .club-footer-conteudo {
+            width: min(1250px, 92%);
+
+            min-height: 140px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .club-footer-marca {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .club-footer-marca img {
+            width: 48px;
+            height: 48px;
+
+            object-fit: contain;
+        }
+
+
+        .club-footer-marca strong {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-weight: normal;
+        }
+
+
+        .club-footer p {
+            color: #57534d;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           RESPONSIVO
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .cadastro-container {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+
+                padding-top: 60px;
+            }
+
+
+            .cadastro-apresentacao {
+                text-align: center;
+            }
+
+
+            .cadastro-apresentacao p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .cadastro-linha {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .cadastro-frase {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .cadastro-card {
+                width: min(520px, 100%);
+
+                margin: 0 auto;
+            }
+
+
+            .club-menu {
+                position: absolute;
+
+                top: 78px;
+                left: 0;
+                right: 0;
+
+                display: none;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                padding:
+                    15px
+                    5%;
+
+                background: #090909;
+
+                border-bottom:
+                    1px solid #332b22;
+            }
+
+
+            .club-menu.aberto {
+                display: flex;
+            }
+
+
+            .club-menu a {
+                padding: 15px 5px;
+
+                border-bottom:
+                    1px solid #1d1b18;
+            }
+
+
+            .club-menu-btn {
+                display: block;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .club-nav {
+                min-height: 68px;
+            }
+
+
+            .club-menu {
+                top: 68px;
+            }
+
+
+            .cadastro-container {
+                padding:
+                    45px
+                    0
+                    70px;
+            }
+
+
+            .cadastro-card {
+                padding:
+                    32px
+                    22px;
+            }
+
+
+            .cadastro-senhas {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+
+            .club-footer-conteudo {
+                flex-direction: column;
+
+                justify-content: center;
+
+                text-align: center;
+
+                padding:
+                    30px
+                    0;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
-<body>
-
-<header class="topo">
-
-    <a
-        href="index.html"
-        class="marca"
-    >
-
-        <img
-            src="imagens/escudo/escudo.png"
-            alt="Escudo do Shelbinhos FC"
-            class="mini-escudo-img"
-        >
-
-        <div>
-
-            <strong>
-                Shelbinhos FC
-            </strong>
-
-            <small>
-                EST. 2026
-            </small>
-
-        </div>
-
-    </a>
+<body class="cadastro-page">
 
 
-    <nav>
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-        <a href="index.html">
-            Início
-        </a>
+    <header class="club-header">
 
-        <a href="loja.html">
-            Loja
-        </a>
-
-        <a href="jogadores.html">
-            Elenco
-        </a>
-
-        <a
-            href="destaques.html"
-            class="destaque-emoji"
-            title="Highlights"
-        >
-            😈
-        </a>
-
-        <a href="carrinho.html">
-
-            Carrinho
-
-            <span class="cart-count">
-                0
-            </span>
-
-        </a>
-
-        <a
-            href="login.html"
-            class="auth-menu-link"
-        >
-            Entrar
-        </a>
-
-    </nav>
-
-</header>
+        <nav class="club-nav">
 
 
-<main class="auth-page">
-
-    <section class="auth-container">
-
-        <div class="auth-box">
-
-            <p class="auth-mini-title">
-                SHELBINHOS FC
-            </p>
-
-            <h1>
-                Criar conta
-            </h1>
-
-            <p class="auth-descricao">
-                Crie sua conta para fazer parte
-                do universo do Shelbinhos FC.
-            </p>
-
-
-            <form
-                id="form-cadastro"
-                class="auth-form"
+            <a
+                href="index.html"
+                class="club-marca"
             >
 
-                <div class="input-group">
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Shelbinhos FC"
+                >
+
+                <div>
+
+                    <strong>
+                        SHELBINHOS FC
+                    </strong>
+
+                    <span>
+                        MAIS QUE UM TIME
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="club-menu-btn"
+                id="club-menu-btn"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+
+            <div
+                class="club-menu"
+                id="club-menu"
+            >
+
+                <a href="index.html">
+                    INÍCIO
+                </a>
+
+                <a href="jogadores.html">
+                    ELENCO
+                </a>
+
+                <a href="highlights.html">
+                    HIGHLIGHTS
+                </a>
+
+                <a href="estatisticas.html">
+                    ESTATÍSTICAS
+                </a>
+
+                <a href="escalacao.html">
+                    ESCALAÇÃO
+                </a>
+
+                <a
+                    href="login.html"
+                    class="ativo"
+                >
+                    ENTRAR
+                </a>
+
+            </div>
+
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         CADASTRO
+    ========================================== -->
+
+    <main class="cadastro-container">
+
+
+        <!-- APRESENTAÇÃO -->
+
+        <section class="cadastro-apresentacao">
+
+            <span>
+                SHELBINHOS FC
+            </span>
+
+            <h1>
+                FAÇA PARTE
+                <em>DA TROPA.</em>
+            </h1>
+
+            <p>
+                Crie sua conta para ter seu espaço
+                dentro do site do Shelbinhos FC
+                e acessar seu perfil.
+            </p>
+
+            <div class="cadastro-linha"></div>
+
+            <div class="cadastro-frase">
+                “O clube é feito por quem carrega
+                o escudo.”
+            </div>
+
+        </section>
+
+
+        <!-- FORMULÁRIO -->
+
+        <section class="cadastro-card">
+
+
+            <div class="cadastro-card-topo">
+
+                <span>
+                    CRIAR CONTA
+                </span>
+
+                <h2>
+                    Novo membro
+                </h2>
+
+                <p>
+                    Preencha seus dados para
+                    criar sua conta.
+                </p>
+
+            </div>
+
+
+            <form id="form-cadastro">
+
+
+                <!-- NOME -->
+
+                <div class="cadastro-campo">
 
                     <label for="nome">
-                        Nome
+                        NOME
                     </label>
 
                     <input
                         type="text"
                         id="nome"
                         placeholder="Seu nome"
+                        autocomplete="name"
                         required
                     >
 
                 </div>
 
 
-                <div class="input-group">
+                <!-- EMAIL -->
+
+                <div class="cadastro-campo">
 
                     <label for="email">
-                        E-mail
+                        E-MAIL
                     </label>
 
                     <input
                         type="email"
                         id="email"
-                        placeholder="seuemail@email.com"
+                        placeholder="seuemail@exemplo.com"
+                        autocomplete="email"
                         required
                     >
 
                 </div>
 
 
-                <div class="input-group">
+                <!-- SENHAS -->
 
-                    <label for="senha">
-                        Senha
-                    </label>
+                <div class="cadastro-senhas">
 
-                    <input
-                        type="password"
-                        id="senha"
-                        placeholder="Mínimo de 6 caracteres"
-                        minlength="6"
-                        required
-                    >
+
+                    <div class="cadastro-campo">
+
+                        <label for="senha">
+                            SENHA
+                        </label>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            placeholder="Crie uma senha"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="cadastro-campo">
+
+                        <label for="confirmar-senha">
+                            CONFIRMAR SENHA
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmar-senha"
+                            placeholder="Repita a senha"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                    </div>
+
 
                 </div>
 
 
-                <div class="input-group">
-
-                    <label for="confirmar-senha">
-                        Confirmar senha
-                    </label>
-
-                    <input
-                        type="password"
-                        id="confirmar-senha"
-                        placeholder="Digite novamente"
-                        minlength="6"
-                        required
-                    >
-
-                </div>
-
+                <!-- BOTÃO -->
 
                 <button
                     type="submit"
-                    class="auth-botao"
+                    class="cadastro-btn"
                 >
-                    Criar conta
+                    CRIAR CONTA
                 </button>
+
+
+                <!-- MENSAGEM -->
+
+                <p id="mensagem-auth"></p>
+
 
             </form>
 
 
-            <p id="mensagem-auth"></p>
+            <!-- LOGIN -->
 
+            <div class="cadastro-login">
 
-            <p class="auth-link">
-
-                Já possui uma conta?
+                <p>
+                    Já possui uma conta?
+                </p>
 
                 <a href="login.html">
-                    Entrar
+                    ENTRAR NA MINHA CONTA →
                 </a>
 
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="club-footer">
+
+        <div class="club-footer-conteudo">
+
+
+            <div class="club-footer-marca">
+
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Shelbinhos FC"
+                >
+
+                <strong>
+                    SHELBINHOS FC
+                </strong>
+
+            </div>
+
+
+            <p>
+                Todos juntos pelo mesmo escudo.
             </p>
+
 
         </div>
 
-    </section>
-
-</main>
+    </footer>
 
 
-<script src="js/script.js"></script>
+    <!-- =========================================
+         SUPABASE
 
-<script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-></script>
+         ESSA ORDEM É IMPORTANTE.
+    ========================================== -->
 
-<script src="js/supabase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script src="js/auth.js"></script>
+    <script src="js/supabase.js"></script>
+
+    <script src="js/auth.js"></script>
+
+
+    <script>
+
+        /* =========================================
+           MENU MOBILE
+        ========================================= */
+
+        const menuBtn =
+            document.getElementById(
+                "club-menu-btn"
+            );
+
+        const menu =
+            document.getElementById(
+                "club-menu"
+            );
+
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                menu.classList.toggle(
+                    "aberto"
+                );
+
+            }
+        );
+
+    </script>
+
 
 </body>
 

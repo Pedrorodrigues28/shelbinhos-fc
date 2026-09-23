@@ -8,274 +8,1244 @@
     <title>Elenco | Shelbinhos FC</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body.elenco-page {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(157, 128, 81, 0.14),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #17140f 0%,
+                    #080808 35%,
+                    #050505 100%
+                );
+
+            color: #eee9df;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .club-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(7, 7, 7, 0.94);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom:
+                1px solid rgba(176, 141, 87, 0.18);
+        }
+
+        .club-nav {
+            width: min(1250px, 92%);
+            min-height: 78px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .club-marca {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            color: #eee9df;
+            text-decoration: none;
+        }
+
+        .club-marca img {
+            width: 45px;
+            height: 45px;
+
+            object-fit: contain;
+        }
+
+        .club-marca strong {
+            display: block;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 17px;
+            font-weight: normal;
+
+            letter-spacing: 2px;
+        }
+
+        .club-marca span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #8b7758;
+
+            font-size: 8px;
+
+            letter-spacing: 3px;
+        }
+
+
+        /* MENU */
+
+        .club-menu {
+            display: flex;
+            align-items: center;
+
+            gap: 23px;
+        }
+
+        .club-menu a {
+            color: #99938a;
+
+            text-decoration: none;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.2s;
+        }
+
+        .club-menu a:hover,
+        .club-menu a.ativo {
+            color: #c0a16b;
+        }
+
+        .club-menu-btn {
+            display: none;
+
+            width: 44px;
+            height: 44px;
+
+            background: transparent;
+
+            color: #c0a16b;
+
+            border: 1px solid #453a2e;
+
+            cursor: pointer;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================
+           CONTAINER
+        ========================================= */
+
+        .elenco-container {
+            width: min(1250px, 92%);
+
+            margin: 0 auto;
+
+            padding: 70px 0 100px;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .elenco-hero {
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+        .elenco-hero > span {
+            color: #9d8051;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 5px;
+        }
+
+        .elenco-hero h1 {
+            margin: 10px 0 15px;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: clamp(45px, 7vw, 76px);
+            font-weight: normal;
+
+            letter-spacing: 4px;
+        }
+
+        .elenco-hero-linha {
+            width: 80px;
+            height: 1px;
+
+            margin: 22px auto;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #b08d57,
+                    transparent
+                );
+        }
+
+        .elenco-hero p {
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            color: #77736d;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           GRID
+        ========================================= */
+
+        .elenco-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .elenco-card {
+            position: relative;
+
+            min-height: 560px;
+
+            overflow: hidden;
+
+            background: #0a0a09;
+
+            border: 1px solid #332d25;
+
+            border-radius: 5px;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .elenco-card:hover {
+            transform: translateY(-6px);
+
+            border-color: #846b45;
+        }
+
+
+        /* FOTO */
+
+        .elenco-card-foto {
+            position: relative;
+
+            height: 330px;
+
+            overflow: hidden;
+        }
+
+        .elenco-card-foto img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center top;
+
+            filter:
+                brightness(0.65)
+                saturate(0.80);
+
+            transition:
+                transform 0.4s ease,
+                filter 0.4s ease;
+        }
+
+        .elenco-card:hover
+        .elenco-card-foto img {
+            transform: scale(1.05);
+
+            filter:
+                brightness(0.80)
+                saturate(0.95);
+        }
+
+        .elenco-card-foto::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(7, 7, 7, 0.95),
+                    transparent 55%
+                );
+        }
+
+
+        /* NÚMERO */
+
+        .elenco-numero {
+            position: absolute;
+
+            z-index: 4;
+
+            top: 20px;
+            right: 22px;
+
+            color: rgba(192, 161, 107, 0.75);
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 34px;
+
+            text-shadow:
+                0 3px 12px #000;
+        }
+
+
+        /* INFORMAÇÕES */
+
+        .elenco-card-info {
+            padding: 28px;
+        }
+
+        .elenco-posicao {
+            color: #ad9165;
+
+            font-size: 9px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+        .elenco-card h2 {
+            margin: 7px 0 3px;
+
+            color: #f0ebe1;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 30px;
+            font-weight: normal;
+        }
+
+        .elenco-username {
+            margin: 0;
+
+            color: #777169;
+
+            font-size: 11px;
+        }
+
+
+        /* DESCRIÇÃO */
+
+        .elenco-descricao {
+            margin-top: 19px;
+
+            color: #918a80;
+
+            font-size: 13px;
+
+            line-height: 1.75;
+        }
+
+
+        /* DIVISÓRIA */
+
+        .elenco-divisor {
+            width: 100%;
+            height: 1px;
+
+            margin: 22px 0 18px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #51412e,
+                    transparent
+                );
+        }
+
+
+        /* MARCA REGISTRADA */
+
+        .marca-titulo {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #74654f;
+
+            font-size: 8px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+
+        .marcas {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .marcas span {
+            padding: 7px 10px;
+
+            background:
+                rgba(157, 128, 81, 0.08);
+
+            color: #b99a67;
+
+            border:
+                1px solid
+                rgba(157, 128, 81, 0.22);
+
+            font-size: 8px;
+            font-weight: bold;
+
+            letter-spacing: 1.4px;
+        }
+
+
+        /* =========================================
+           RESERVAS
+        ========================================= */
+
+        .elenco-reservas {
+            margin-top: 80px;
+        }
+
+        .elenco-reservas-titulo span {
+            color: #9d8051;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+        .elenco-reservas-titulo h2 {
+            margin: 8px 0 25px;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 36px;
+            font-weight: normal;
+        }
+
+
+        /* EXU */
+
+        .reserva-card {
+            max-width: 520px;
+
+            display: grid;
+
+            grid-template-columns:
+                155px
+                1fr;
+
+            align-items: stretch;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at left,
+                    rgba(157, 128, 81, 0.12),
+                    transparent 50%
+                ),
+                #0b0b0a;
+
+            border: 1px solid #332d25;
+
+            border-radius: 5px;
+        }
+
+        .reserva-card img {
+            width: 155px;
+            height: 180px;
+
+            object-fit: cover;
+            object-position: center top;
+
+            filter:
+                brightness(0.72)
+                saturate(0.80);
+        }
+
+        .reserva-info {
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 25px;
+        }
+
+        .reserva-info > span {
+            color: #9d8051;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+        }
+
+        .reserva-info h3 {
+            margin: 7px 0 5px;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 25px;
+            font-weight: normal;
+        }
+
+        .reserva-info p {
+            margin: 0;
+
+            color: #716d66;
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .club-footer {
+            border-top: 1px solid #26221c;
+
+            background: #050505;
+        }
+
+        .club-footer-conteudo {
+            width: min(1250px, 92%);
+
+            min-height: 140px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .club-footer-marca {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .club-footer-marca img {
+            width: 48px;
+            height: 48px;
+
+            object-fit: contain;
+        }
+
+        .club-footer-marca strong {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-weight: normal;
+        }
+
+        .club-footer p {
+            color: #57534d;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           RESPONSIVO
+        ========================================= */
+
+        @media (max-width: 1000px) {
+
+            .club-menu {
+                position: absolute;
+
+                top: 78px;
+                left: 0;
+                right: 0;
+
+                display: none;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                padding: 15px 5%;
+
+                background: #090909;
+
+                border-bottom:
+                    1px solid #332b22;
+            }
+
+            .club-menu.aberto {
+                display: flex;
+            }
+
+            .club-menu a {
+                padding: 15px 5px;
+
+                border-bottom:
+                    1px solid #1d1b18;
+            }
+
+            .club-menu-btn {
+                display: block;
+            }
+
+        }
+
+
+        @media (max-width: 750px) {
+
+            .elenco-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .club-nav {
+                min-height: 68px;
+            }
+
+            .club-menu {
+                top: 68px;
+            }
+
+            .elenco-container {
+                padding-top: 50px;
+            }
+
+            .elenco-card {
+                min-height: auto;
+            }
+
+            .elenco-card-foto {
+                height: 380px;
+            }
+
+            .reserva-card {
+                grid-template-columns:
+                    110px
+                    1fr;
+            }
+
+            .reserva-card img {
+                width: 110px;
+                height: 145px;
+            }
+
+            .reserva-info {
+                padding: 18px;
+            }
+
+            .club-footer-conteudo {
+                flex-direction: column;
+
+                justify-content: center;
+
+                text-align: center;
+
+                padding: 30px 0;
+            }
+
+        }
+
+    </style>
+
 </head>
 
-<body>
 
-<header class="topo">
+<body class="elenco-page">
 
-    <a href="index.html" class="marca">
 
-        <img
-            src="imagens/escudo/escudo.png"
-            alt="Escudo do Shelbinhos FC"
-            class="mini-escudo-img"
-        >
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-        <div>
-            <strong>Shelbinhos FC</strong>
-            <small>EST. 2026</small>
+    <header class="club-header">
+
+        <nav class="club-nav">
+
+            <a
+                href="index.html"
+                class="club-marca"
+            >
+
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Shelbinhos FC"
+                >
+
+                <div>
+
+                    <strong>
+                        SHELBINHOS FC
+                    </strong>
+
+                    <span>
+                        MAIS QUE UM TIME
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="club-menu-btn"
+                id="club-menu-btn"
+            >
+                ☰
+            </button>
+
+
+            <div
+                class="club-menu"
+                id="club-menu"
+            >
+
+                <a href="index.html">
+                    INÍCIO
+                </a>
+
+                <a
+                    href="jogadores.html"
+                    class="ativo"
+                >
+                    ELENCO
+                </a>
+
+                <a href="highlights.html">
+                    HIGHLIGHTS
+                </a>
+
+                <a href="estatisticas.html">
+                    ESTATÍSTICAS
+                </a>
+
+                <a href="escalacao.html">
+                    ESCALAÇÃO
+                </a>
+
+                <a href="perfil.html">
+                    PERFIL
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="elenco-container">
+
+
+        <!-- HERO -->
+
+        <section class="elenco-hero">
+
+            <span>
+                SHELBINHOS FC
+            </span>
+
+            <h1>
+                ELENCO
+            </h1>
+
+            <div class="elenco-hero-linha"></div>
+
+            <p>
+                Cada jogador tem sua própria maneira
+                de representar o Shelbinhos dentro de campo.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             TITULARES
+        ====================================== -->
+
+        <section class="elenco-grid">
+
+
+            <!-- =================================
+                 RODRIGUES
+            ================================== -->
+
+            <article class="elenco-card">
+
+
+                <div class="elenco-card-foto">
+
+                    <img
+                        src="imagens/jogadores/rodrigues.png"
+                        alt="Rodrigues"
+                    >
+
+                    <span class="elenco-numero">
+                        77
+                    </span>
+
+                </div>
+
+
+                <div class="elenco-card-info">
+
+                    <span class="elenco-posicao">
+                        ATACANTE
+                    </span>
+
+                    <h2>
+                        RODRIGUES
+                    </h2>
+
+                    <p class="elenco-username">
+                        @rdxinn
+                    </p>
+
+
+                    <p class="elenco-descricao">
+                        Habilidoso e driblador.
+                        Jogador versátil que circula
+                        por diferentes zonas do campo
+                        e ajuda a preencher os espaços
+                        durante a partida.
+                    </p>
+
+
+                    <div class="elenco-divisor"></div>
+
+
+                    <span class="marca-titulo">
+                        MARCA REGISTRADA
+                    </span>
+
+
+                    <div class="marcas">
+
+                        <span>
+                            DRIBLE
+                        </span>
+
+                        <span>
+                            VERSATILIDADE
+                        </span>
+
+                        <span>
+                            MOVIMENTAÇÃO
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- =================================
+                 GAMBETA
+            ================================== -->
+
+            <article class="elenco-card">
+
+
+                <div class="elenco-card-foto">
+
+                    <img
+                        src="imagens/jogadores/gambeta.png"
+                        alt="Gambeta"
+                    >
+
+                    <span class="elenco-numero">
+                        21
+                    </span>
+
+                </div>
+
+
+                <div class="elenco-card-info">
+
+                    <span class="elenco-posicao">
+                        MEI • ARMADOR
+                    </span>
+
+                    <h2>
+                        GAMBETA
+                    </h2>
+
+                    <p class="elenco-username">
+                        @CezarNS
+                    </p>
+
+
+                    <p class="elenco-descricao">
+                        O garçom do time.
+                        Meia clássico, técnico e
+                        de muita categoria.
+                        Organiza o jogo, encontra passes
+                        e também pode decidir partidas.
+                    </p>
+
+
+                    <div class="elenco-divisor"></div>
+
+
+                    <span class="marca-titulo">
+                        MARCA REGISTRADA
+                    </span>
+
+
+                    <div class="marcas">
+
+                        <span>
+                            VISÃO
+                        </span>
+
+                        <span>
+                            PASSE
+                        </span>
+
+                        <span>
+                            CATEGORIA
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- =================================
+                 COLLIN
+            ================================== -->
+
+            <article class="elenco-card">
+
+
+                <div class="elenco-card-foto">
+
+                    <img
+                        src="imagens/jogadores/collin.png"
+                        alt="Collin"
+                    >
+
+                    <span class="elenco-numero">
+                        7
+                    </span>
+
+                </div>
+
+
+                <div class="elenco-card-info">
+
+                    <span class="elenco-posicao">
+                        MEIA ESQUERDA
+                    </span>
+
+                    <h2>
+                        COLLIN
+                    </h2>
+
+                    <p class="elenco-username">
+                        @Fhcg
+                    </p>
+
+
+                    <p class="elenco-descricao">
+                        Decisivo e jogador raiz.
+                        Compete em cada lance e costuma
+                        aparecer justamente nos momentos
+                        em que o time mais precisa.
+                    </p>
+
+
+                    <div class="elenco-divisor"></div>
+
+
+                    <span class="marca-titulo">
+                        MARCA REGISTRADA
+                    </span>
+
+
+                    <div class="marcas">
+
+                        <span>
+                            DECISÃO
+                        </span>
+
+                        <span>
+                            RAÇA
+                        </span>
+
+                        <span>
+                            PRESENÇA
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- =================================
+                 BEZERRA
+            ================================== -->
+
+            <article class="elenco-card">
+
+
+                <div class="elenco-card-foto">
+
+                    <img
+                        src="imagens/jogadores/bezerra.png"
+                        alt="Bezerra"
+                    >
+
+                    <span class="elenco-numero">
+                        97
+                    </span>
+
+                </div>
+
+
+                <div class="elenco-card-info">
+
+                    <span class="elenco-posicao">
+                        MEIA DIREITA
+                    </span>
+
+                    <h2>
+                        BEZERRA
+                    </h2>
+
+                    <p class="elenco-username">
+                        @Shamps
+                    </p>
+
+
+                    <p class="elenco-descricao">
+                        Veloz, driblador e criativo.
+                        Usa a velocidade pelos lados,
+                        quebra linhas e tem facilidade
+                        para criar jogadas para o ataque.
+                    </p>
+
+
+                    <div class="elenco-divisor"></div>
+
+
+                    <span class="marca-titulo">
+                        MARCA REGISTRADA
+                    </span>
+
+
+                    <div class="marcas">
+
+                        <span>
+                            VELOCIDADE
+                        </span>
+
+                        <span>
+                            DRIBLE
+                        </span>
+
+                        <span>
+                            CRIAÇÃO
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =====================================
+             BANCO
+        ====================================== -->
+
+        <section class="elenco-reservas">
+
+
+            <div class="elenco-reservas-titulo">
+
+                <span>
+                    BANCO DE RESERVAS
+                </span>
+
+                <h2>
+                    Opções do elenco
+                </h2>
+
+            </div>
+
+
+            <!-- EXU -->
+
+            <article class="reserva-card">
+
+                <img
+                    src="imagens/jogadores/exu.png"
+                    alt="Exu"
+                >
+
+
+                <div class="reserva-info">
+
+                    <span>
+                        RESERVA
+                    </span>
+
+                    <h3>
+                        EXU
+                    </h3>
+
+                    <p>
+                        @Youngxpax
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="club-footer">
+
+        <div class="club-footer-conteudo">
+
+
+            <div class="club-footer-marca">
+
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Shelbinhos FC"
+                >
+
+                <strong>
+                    SHELBINHOS FC
+                </strong>
+
+            </div>
+
+
+            <p>
+                Todos juntos pelo mesmo escudo.
+            </p>
+
+
         </div>
 
-    </a>
+    </footer>
 
 
-    <nav><a
-    href="login.html"
-    class="auth-menu-link"
->
-    Entrar
-</a>
+    <!-- =========================================
+         MENU MOBILE
+    ========================================== -->
 
-        <a href="index.html">
-            Início
-        </a>
+    <script>
 
-        <a href="loja.html">
-            Loja
-        </a>
+        const menuBtn =
+            document.getElementById(
+                "club-menu-btn"
+            );
 
-        <a href="jogadores.html" class="ativo">
-            Elenco
-        </a>
+        const menu =
+            document.getElementById(
+                "club-menu"
+            );
 
-        <a
-    href="highlights.html"
-    class="destaque-emoji"
-    title="Highlights"
->
-    😈
-</a>
 
-        <a href="carrinho.html">
-            Carrinho
-            <span class="cart-count">0</span>
-        </a>
+        menuBtn.addEventListener(
+            "click",
+            () => {
 
-    </nav>
+                menu.classList.toggle(
+                    "aberto"
+                );
 
-</header>
+            }
+        );
 
+    </script>
 
-<main>
 
-    <section class="cabecalho-pagina">
-
-        <p>SHELBINHOS FOOTBALL CLUB</p>
-
-        <h1>
-            Nosso elenco
-        </h1>
-
-        <span>
-            Os jogadores que vestem o preto e dourado.
-        </span>
-
-    </section>
-
-
-    <section class="secao">
-
-        <div class="titulo-secao">
-
-            <p>PLANTEL 2026</p>
-
-            <h2>
-                Jogadores
-            </h2>
-
-        </div>
-
-
-        <div class="jogadores-grid">
-
-            <article class="jogador-card">
-
-                <div
-                    class="jogador-foto"
-                    style="background-image: url('imagens/jogadores/rodrigues.png');"
-                ></div>
-
-                <div class="jogador-info">
-
-                    <span class="numero">
-                        10
-                    </span>
-
-                    <h3>
-                        Rodrigues
-                    </h3>
-
-                    <p>
-                        Shelbinhos FC
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="jogador-card">
-
-                <div
-                    class="jogador-foto"
-                    style="background-image: url('imagens/jogadores/gambeta.png');"
-                ></div>
-
-                <div class="jogador-info">
-
-                    <span class="numero">
-                        08
-                    </span>
-
-                    <h3>
-                        Gambeta
-                    </h3>
-
-                    <p>
-                        Shelbinhos FC
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="jogador-card">
-
-                <div
-                    class="jogador-foto"
-                    style="background-image: url('imagens/jogadores/exu.png');"
-                ></div>
-
-                <div class="jogador-info">
-
-                    <span class="numero">
-                        00
-                    </span>
-
-                    <h3>
-                        Exu
-                    </h3>
-
-                    <p>
-                        Shelbinhos FC
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="jogador-card">
-
-                <div
-                    class="jogador-foto"
-                    style="background-image: url('imagens/jogadores/bezerra.png');"
-                ></div>
-
-                <div class="jogador-info">
-
-                    <span class="numero">
-                        11
-                    </span>
-
-                    <h3>
-                        Bezerra
-                    </h3>
-
-                    <p>
-                        Shelbinhos FC
-                    </p>
-
-                </div>
-
-            </article>
-            <article class="jogador-card">
-
-                <div
-                    class="jogador-foto"
-                    style="background-image: url('imagens/jogadores/collin.png');"
-                ></div>
-
-                <div class="jogador-info">
-
-                    <span class="numero">
-                        07
-                    </span>
-
-                    <h3>
-                        Collin
-                    </h3>
-
-                    <p>
-                        Shelbinhos FC
-                    </p>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <section class="secao chamada-elenco">
-
-        <p class="sobrelinha">
-            UM CLUBE. UMA FAMÍLIA.
-        </p>
-
-        <h2>
-            Vestimos o mesmo
-            <span>escudo.</span>
-        </h2>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <div>
-
-        <img
-            src="imagens/escudo/escudo.png"
-            alt="Shelbinhos FC"
-            class="footer-escudo"
-        >
-
-        <h3>
-            Shelbinhos FC
-        </h3>
-
-        <p>
-            Futebol, amizade e tradição.
-        </p>
-
-    </div>
-
-    <p>
-        © 2026 Shelbinhos FC
-    </p>
-
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/auth.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Ice Nuggets | Conceito por Rodrigues
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
+    <!-- =========================================
+         SOMENTE O BOTÃO DO ÁUDIO
+         O RESTO DO DESIGN CONTINUA NO style.css
+    ========================================== -->
+
+    <style>
+
+        .controle-audio {
+            position: fixed;
+
+            right: 22px;
+            bottom: 22px;
+
+            z-index: 300;
+
+            min-height: 42px;
+
+            padding:
+                0
+                15px;
+
+            background:
+                rgba(
+                    5,
+                    7,
+                    6,
+                    0.90
+                );
+
+            color: #56c982;
+
+            border:
+                1px solid
+                rgba(
+                    86,
+                    201,
+                    130,
+                    0.35
+                );
+
+            backdrop-filter:
+                blur(10px);
+
+            cursor: pointer;
+
+            font-size: 8px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .controle-audio:hover {
+            transform:
+                translateY(-2px);
+
+            background:
+                rgba(
+                    47,
+                    168,
+                    102,
+                    0.13
+                );
+
+            border-color:
+                #2fa866;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .controle-audio {
+                right: 12px;
+                bottom: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         ÁUDIO DE FUNDO
+
+         O arquivo precisa estar em:
+
+         ice-nuggets/
+         └── audio/
+             └── tema.mp3
+    ========================================== -->
+
+    <audio
+        id="audio-fundo"
+        src="audio/tema.mp3"
+        loop
+        autoplay
+        preload="auto"
+    ></audio>
+
+
+    <button
+        id="controle-audio"
+        class="controle-audio"
+        type="button"
+    >
+        ♫ SOM
+    </button>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="topo">
+
+
+        <a
+            href="../index.html"
+            class="voltar"
+        >
+            ← VOLTAR AO SHELBINHOS
+        </a>
+
+
+        <div class="tag-conceito">
+
+            CONCEITO NÃO OFICIAL
+
+        </div>
+
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =========================================
+             HERO
+        ========================================== -->
+
+        <section class="hero">
+
+
+            <!-- TEXTO -->
+
+            <div class="hero-texto">
+
+
+                <span class="sobrelinha">
+
+                    UMA IDEIA QUE NASCEU
+                    DA INSPIRAÇÃO
+
+                </span>
+
+
+                <h1>
+
+                    ICE
+
+                    <span>
+                        NUGGETS
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    Uma página criada como forma
+                    de mostrar onde uma inspiração
+                    pode chegar quando encontra
+                    vontade de criar.
+
+                </p>
+
+
+                <div class="hero-botoes">
+
+
+                    <a
+                        href="#mensagem"
+                        class="botao"
+                    >
+
+                        LER A MENSAGEM
+
+                    </a>
+
+
+                    <a
+                        href="../index.html"
+                        class="botao botao-vazado"
+                    >
+
+                        VER SHELBINHOS FC
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- FOTO -->
+
+            <div class="hero-visual">
+
+
+                <div class="hero-bloco"></div>
+
+
+                <img
+                    src="imagens/dona.png"
+                    alt="Dona"
+                    class="foto-dona"
+                >
+
+
+                <div class="escudo-destaque">
+
+
+                    <img
+                        src="imagens/escudo.png"
+                        alt="Ice Nuggets"
+                    >
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             MENSAGEM PARA O DONA
+        ========================================== -->
+
+        <section
+            class="mensagem"
+            id="mensagem"
+        >
+
+
+            <div class="mensagem-container">
+
+
+                <!-- TÍTULO -->
+
+                <div class="mensagem-titulo">
+
+
+                    <span>
+
+                        POR QUE ESSA PÁGINA EXISTE?
+
+                    </span>
+
+
+                    <h2>
+
+                        Dodo, uma inspiração que
+                        acabou virando projeto.
+
+                    </h2>
+
+
+                </div>
+
+
+                <!-- TEXTO -->
+
+                <div class="mensagem-texto">
+
+
+                    <p>
+
+                        O Shelbinhos começou só como
+                        uma resenha entre amigos.
+                        Um nome, umas partidas e
+                        muita zoeira.
+
+                        Só que em algum momento eu
+                        comecei a olhar pra tudo isso
+                        e pensar que dava pra transformar
+                        a brincadeira em algo maior.
+
+                    </p>
+
+
+                    <p>
+
+                        Acompanhar você foi uma das
+                        coisas que me fizeram pensar assim.
+
+                        Ver alguém vivendo de futebol,
+                        conteúdo, competição e das próprias
+                        ideias me mostrou que aquilo
+                        que a gente gosta não precisa
+                        ficar só como passatempo.
+
+                    </p>
+
+
+                    <p>
+
+                        Hoje eu tô começando na área
+                        de desenvolvimento e tentando
+                        construir meu próprio caminho.
+
+                        Foi daí que nasceu esse site:
+                        juntando algo que eu gosto muito,
+                        que é futebol e resenha com meus
+                        amigos, com algo que estou
+                        aprendendo a fazer de verdade.
+
+                    </p>
+
+
+                    <p>
+
+                        Aos poucos o Shelbinhos deixou
+                        de ser apenas um nome.
+
+                        Veio o escudo, os jogadores,
+                        as estatísticas, a escalação
+                        e agora um site inteiro criado
+                        por mim enquanto continuo
+                        aprendendo programação.
+
+                    </p>
+
+
+                    <p>
+
+                        Eu não fiz essa página esperando
+                        emprego, vaga no time ou qualquer
+                        obrigação da sua parte.
+
+                        Achei apenas que seria uma forma
+                        muito mais foda de agradecer
+                        do que simplesmente mandar uma
+                        mensagem dizendo que você
+                        me inspira.
+
+                    </p>
+
+
+                    <p class="mensagem-destaque">
+
+                        Se algum dia nossas ideias se
+                        cruzarem, seja num jogo,
+                        num projeto ou simplesmente
+                        numa resenha, seria absurdo.
+
+                        Até lá, eu vou continuar tentando
+                        construir algo que seja meu.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             CAMINHO DO PROJETO
+        ========================================== -->
+
+        <section class="caminho">
+
+
+            <div class="secao-topo">
+
+
+                <span>
+
+                    DA RESENHA PARA O CÓDIGO
+
+                </span>
+
+
+                <h2>
+
+                    Uma ideia puxando a outra.
+
+                </h2>
+
+
+            </div>
+
+
+            <div class="caminho-grid">
+
+
+                <!-- PASSO 1 -->
+
+                <article class="passo">
+
+
+                    <span>
+                        01
+                    </span>
+
+
+                    <h3>
+
+                        A RESENHA
+
+                    </h3>
+
+
+                    <p>
+
+                        Um time criado
+                        entre amigos.
+
+                    </p>
+
+
+                </article>
+
+
+                <div class="seta">
+
+                    →
+
+                </div>
+
+
+                <!-- PASSO 2 -->
+
+                <article class="passo">
+
+
+                    <span>
+                        02
+                    </span>
+
+
+                    <h3>
+
+                        O SHELBINHOS
+
+                    </h3>
+
+
+                    <p>
+
+                        Nome, escudo
+                        e identidade.
+
+                    </p>
+
+
+                </article>
+
+
+                <div class="seta">
+
+                    →
+
+                </div>
+
+
+                <!-- PASSO 3 -->
+
+                <article class="passo">
+
+
+                    <span>
+                        03
+                    </span>
+
+
+                    <h3>
+
+                        O SITE
+
+                    </h3>
+
+
+                    <p>
+
+                        Uma ideia transformada
+                        em código.
+
+                    </p>
+
+
+                </article>
+
+
+                <div class="seta">
+
+                    →
+
+                </div>
+
+
+                <!-- PASSO 4 -->
+
+                <article class="passo">
+
+
+                    <span>
+                        04
+                    </span>
+
+
+                    <h3>
+
+                        O COMEÇO
+
+                    </h3>
+
+
+                    <p>
+
+                        Aprendizado e
+                        novas possibilidades.
+
+                    </p>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             FRASE
+        ========================================== -->
+
+        <section class="frase">
+
+
+            <img
+                src="imagens/escudo.png"
+                alt="Ice Nuggets"
+            >
+
+
+            <blockquote>
+
+                “Talvez isso seja só o começo
+                de um projeto entre amigos.
+
+                Mas foi criando coisas assim que
+                eu descobri o quanto gosto de
+                transformar ideias em algo real.”
+
+            </blockquote>
+
+
+        </section>
+
+
+        <!-- =========================================
+             CONTATO
+        ========================================== -->
+
+        <section class="contato">
+
+
+            <div class="contato-caixa">
+
+
+                <span class="contato-sobrelinha">
+
+                    QUER TROCAR UMA IDEIA?
+
+                </span>
+
+
+                <h2>
+
+                    Meu Discord
+
+                </h2>
+
+
+                <p>
+
+                    Se algum dia quiser trocar uma
+                    ideia sobre o projeto,
+                    desenvolvimento, futebol ou
+                    simplesmente resenha.
+
+                </p>
+
+
+                <p
+                    style="
+                        margin-top: 12px;
+                        color: #56c982;
+                        font-weight: bold;
+                    "
+                >
+
+                    Vai que um dia a resenha
+                    sai da tela.
+
+                </p>
+
+
+                <!-- =================================
+                     TROQUE SOMENTE O TEXTO ABAIXO
+                     PELO SEU DISCORD
+                ================================== -->
+
+                <div
+                    class="discord"
+                    id="discord-texto"
+                >
+
+                    rdxx_
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="botao copiar-discord"
+                    id="copiar-discord"
+                >
+
+                    COPIAR DISCORD
+
+                </button>
+
+
+                <p
+                    class="mensagem-copiado"
+                    id="mensagem-copiado"
+                ></p>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             CRÉDITOS
+        ========================================== -->
+
+        <section class="creditos">
+
+
+            <span>
+
+                CONCEITO CRIADO POR
+
+            </span>
+
+
+            <h2>
+
+                RODRIGUES
+
+            </h2>
+
+
+            <h3>
+
+                Desenvolvedor em formação
+
+            </h3>
+
+
+            <div class="linha"></div>
+
+
+            <p>
+
+                Projeto independente e não oficial.
+
+            </p>
+
+
+            <small>
+
+                Sem vínculo oficial com
+                Ice Nuggets, Dona ou
+                organizadores de competições.
+
+            </small>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+
+        <div class="footer-marca">
+
+
+            <img
+                src="imagens/escudo.png"
+                alt="Ice Nuggets"
+            >
+
+
+            <div>
+
+
+                <strong>
+
+                    ICE NUGGETS
+
+                </strong>
+
+
+                <span>
+
+                    CONCEITO NÃO OFICIAL
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+        <a href="../index.html">
+
+            VOLTAR AO SHELBINHOS FC →
+
+        </a>
+
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+
+        /* =========================================
+           COPIAR DISCORD
+        ========================================= */
+
+        const botaoDiscord =
+            document.getElementById(
+                "copiar-discord"
+            );
+
+
+        const discordTexto =
+            document.getElementById(
+                "discord-texto"
+            );
+
+
+        const mensagemCopiado =
+            document.getElementById(
+                "mensagem-copiado"
+            );
+
+
+        botaoDiscord.addEventListener(
+            "click",
+            async () => {
+
+
+                const usuario =
+                    discordTexto
+                        .textContent
+                        .trim();
+
+
+                try {
+
+
+                    await navigator
+                        .clipboard
+                        .writeText(
+                            usuario
+                        );
+
+
+                    mensagemCopiado
+                        .textContent =
+                        "Discord copiado.";
+
+
+                }
+
+
+                catch {
+
+
+                    mensagemCopiado
+                        .textContent =
+                        "Copie o usuário acima.";
+
+
+                }
+
+
+                setTimeout(
+                    () => {
+
+
+                        mensagemCopiado
+                            .textContent =
+                            "";
+
+
+                    },
+                    2500
+                );
+
+
+            }
+        );
+
+
+        /* =========================================
+           ÁUDIO DE FUNDO
+        ========================================= */
+
+        const audioFundo =
+            document.getElementById(
+                "audio-fundo"
+            );
+
+
+        const controleAudio =
+            document.getElementById(
+                "controle-audio"
+            );
+
+
+        /*
+            0.10 = 10% de volume.
+
+            Se quiser ainda mais baixo:
+            0.07 = 7%
+        */
+
+        audioFundo.volume = 0.10;
+
+
+        /*
+            TENTA COMEÇAR AUTOMATICAMENTE.
+
+            Alguns navegadores permitem.
+            Outros bloqueiam áudio automático.
+        */
+
+        async function tentarIniciarAudio() {
+
+
+            try {
+
+
+                await audioFundo.play();
+
+
+                controleAudio.textContent =
+                    "♫ SOM LIGADO";
+
+
+            }
+
+
+            catch {
+
+
+                controleAudio.textContent =
+                    "▶ ATIVAR SOM";
+
+
+            }
+
+
+        }
+
+
+        /* =========================================
+           BOTÃO LIGAR / DESLIGAR
+        ========================================= */
+
+        controleAudio.addEventListener(
+            "click",
+            async () => {
+
+
+                if (audioFundo.paused) {
+
+
+                    try {
+
+
+                        await audioFundo.play();
+
+
+                        controleAudio
+                            .textContent =
+                            "♫ SOM LIGADO";
+
+
+                    }
+
+
+                    catch {
+
+
+                        controleAudio
+                            .textContent =
+                            "▶ ATIVAR SOM";
+
+
+                    }
+
+
+                }
+
+
+                else {
+
+
+                    audioFundo.pause();
+
+
+                    controleAudio
+                        .textContent =
+                        "♫ SOM DESLIGADO";
+
+
+                }
+
+
+            }
+        );
+
+
+        /* =========================================
+           SE O AUTOPLAY FOR BLOQUEADO,
+           A PRIMEIRA INTERAÇÃO COM A PÁGINA
+           TAMBÉM TENTA INICIAR O SOM.
+        ========================================= */
+
+        let primeiraInteracao = true;
+
+
+        async function iniciarDepoisDeInteracao() {
+
+
+            if (
+                !primeiraInteracao ||
+                !audioFundo.paused
+            ) {
+
+                return;
+
+            }
+
+
+            primeiraInteracao = false;
+
+
+            try {
+
+
+                await audioFundo.play();
+
+
+                controleAudio.textContent =
+                    "♫ SOM LIGADO";
+
+
+            }
+
+
+            catch {
+
+                controleAudio.textContent =
+                    "▶ ATIVAR SOM";
+
+            }
+
+
+        }
+
+
+        document.addEventListener(
+            "click",
+            iniciarDepoisDeInteracao
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            iniciarDepoisDeInteracao
+        );
+
+
+        tentarIniciarAudio();
+
+
+    </script>
+
+
+</body>
+
+</html>

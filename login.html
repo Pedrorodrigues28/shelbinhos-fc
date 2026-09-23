@@ -2,148 +2,949 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Entrar | Shelbinhos FC</title>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body.login-page {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(157, 128, 81, 0.14),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #17140f 0%,
+                    #080808 35%,
+                    #050505 100%
+                );
+
+            color: #eee9df;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .club-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(7, 7, 7, 0.94);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom:
+                1px solid rgba(176, 141, 87, 0.18);
+        }
+
+
+        .club-nav {
+            width: min(1250px, 92%);
+            min-height: 78px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        .club-marca {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: #eee9df;
+        }
+
+
+        .club-marca img {
+            width: 45px;
+            height: 45px;
+
+            object-fit: contain;
+        }
+
+
+        .club-marca strong {
+            display: block;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 17px;
+            font-weight: normal;
+
+            letter-spacing: 2px;
+        }
+
+
+        .club-marca span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #8b7758;
+
+            font-size: 8px;
+
+            letter-spacing: 3px;
+        }
+
+
+        /* MENU */
+
+        .club-menu {
+            display: flex;
+            align-items: center;
+
+            gap: 23px;
+        }
+
+
+        .club-menu a {
+            color: #99938a;
+
+            text-decoration: none;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.2s;
+        }
+
+
+        .club-menu a:hover,
+        .club-menu a.ativo {
+            color: #c0a16b;
+        }
+
+
+        .club-menu-btn {
+            display: none;
+
+            width: 44px;
+            height: 44px;
+
+            background: transparent;
+
+            color: #c0a16b;
+
+            border:
+                1px solid #453a2e;
+
+            cursor: pointer;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================
+           CONTEÚDO
+        ========================================= */
+
+        .login-container {
+            width: min(1100px, 92%);
+
+            min-height: calc(100vh - 220px);
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                0.85fr;
+
+            align-items: center;
+
+            gap: 80px;
+
+            padding:
+                80px
+                0
+                100px;
+        }
+
+
+        /* =========================================
+           LADO ESQUERDO
+        ========================================= */
+
+        .login-apresentacao > span {
+            color: #9d8051;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 5px;
+        }
+
+
+        .login-apresentacao h1 {
+            margin:
+                12px
+                0
+                20px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    48px,
+                    7vw,
+                    78px
+                );
+
+            font-weight: normal;
+
+            line-height: 0.95;
+
+            letter-spacing: 2px;
+        }
+
+
+        .login-apresentacao h1 em {
+            display: block;
+
+            color: #b08d57;
+
+            font-style: normal;
+        }
+
+
+        .login-apresentacao p {
+            max-width: 500px;
+
+            margin: 0;
+
+            color: #77736c;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        .login-linha {
+            width: 80px;
+            height: 1px;
+
+            margin:
+                28px
+                0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #b08d57,
+                    transparent
+                );
+        }
+
+
+        .login-frase {
+            color: #5f5b55;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 17px;
+
+            font-style: italic;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           FORMULÁRIO
+        ========================================= */
+
+        .login-card {
+            position: relative;
+
+            padding:
+                42px
+                38px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(157, 128, 81, 0.11),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    145deg,
+                    #11100e,
+                    #080808
+                );
+
+            border:
+                1px solid
+                #392f24;
+
+            border-radius: 6px;
+        }
+
+
+        .login-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #9d8051,
+                    #c0a16b,
+                    transparent
+                );
+        }
+
+
+        .login-card-topo {
+            margin-bottom: 32px;
+        }
+
+
+        .login-card-topo > span {
+            color: #9d8051;
+
+            font-size: 9px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+
+        .login-card-topo h2 {
+            margin:
+                8px
+                0
+                7px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 34px;
+            font-weight: normal;
+        }
+
+
+        .login-card-topo p {
+            margin: 0;
+
+            color: #716d66;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        /* CAMPO */
+
+        .login-campo {
+            margin-bottom: 19px;
+        }
+
+
+        .login-campo label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #9b8b72;
+
+            font-size: 9px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        .login-campo input {
+            width: 100%;
+            height: 50px;
+
+            padding:
+                0
+                15px;
+
+            background: #090909;
+
+            color: #eee9df;
+
+            border:
+                1px solid
+                #332d25;
+
+            border-radius: 3px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .login-campo input::placeholder {
+            color: #4f4c47;
+        }
+
+
+        .login-campo input:focus {
+            border-color: #9d8051;
+
+            background: #0d0c0a;
+        }
+
+
+        /* BOTÃO PRINCIPAL */
+
+        .login-btn {
+            width: 100%;
+            min-height: 51px;
+
+            margin-top: 7px;
+
+            background: #9d8051;
+
+            color: #090909;
+
+            border:
+                1px solid
+                #9d8051;
+
+            cursor: pointer;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            transition: 0.25s;
+        }
+
+
+        .login-btn:hover {
+            background: #b99a67;
+
+            border-color: #b99a67;
+        }
+
+
+        /* MENSAGEM */
+
+        #mensagem-auth {
+            min-height: 20px;
+
+            margin:
+                16px
+                0
+                0;
+
+            color: #b8a17d;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            text-align: center;
+        }
+
+
+        /* REENVIAR */
+
+        #btn-reenviar {
+            display: none;
+
+            width: 100%;
+
+            margin-top: 10px;
+
+            padding: 12px;
+
+            background: transparent;
+
+            color: #b08d57;
+
+            border:
+                1px solid
+                #4a3d2d;
+
+            cursor: pointer;
+
+            font-size: 9px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.2s;
+        }
+
+
+        #btn-reenviar:hover {
+            border-color: #9d8051;
+
+            color: #d0b17d;
+        }
+
+
+        /* CADASTRO */
+
+        .login-cadastro {
+            margin-top: 27px;
+
+            padding-top: 24px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                #29251f;
+        }
+
+
+        .login-cadastro p {
+            margin:
+                0
+                0
+                12px;
+
+            color: #716d66;
+
+            font-size: 11px;
+        }
+
+
+        .login-cadastro a {
+            color: #b08d57;
+
+            text-decoration: none;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .login-cadastro a:hover {
+            color: #d0b17d;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .club-footer {
+            border-top:
+                1px solid
+                #26221c;
+
+            background: #050505;
+        }
+
+
+        .club-footer-conteudo {
+            width: min(1250px, 92%);
+
+            min-height: 140px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .club-footer-marca {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .club-footer-marca img {
+            width: 48px;
+            height: 48px;
+
+            object-fit: contain;
+        }
+
+
+        .club-footer-marca strong {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-weight: normal;
+        }
+
+
+        .club-footer p {
+            color: #57534d;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           RESPONSIVO
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .login-container {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+
+                padding-top: 60px;
+            }
+
+
+            .login-apresentacao {
+                text-align: center;
+            }
+
+
+            .login-apresentacao p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .login-linha {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .login-card {
+                width: min(500px, 100%);
+
+                margin: 0 auto;
+            }
+
+
+            .club-menu {
+                position: absolute;
+
+                top: 78px;
+                left: 0;
+                right: 0;
+
+                display: none;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                padding:
+                    15px
+                    5%;
+
+                background: #090909;
+
+                border-bottom:
+                    1px solid
+                    #332b22;
+            }
+
+
+            .club-menu.aberto {
+                display: flex;
+            }
+
+
+            .club-menu a {
+                padding: 15px 5px;
+
+                border-bottom:
+                    1px solid
+                    #1d1b18;
+            }
+
+
+            .club-menu-btn {
+                display: block;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .club-nav {
+                min-height: 68px;
+            }
+
+
+            .club-menu {
+                top: 68px;
+            }
+
+
+            .login-container {
+                padding:
+                    45px
+                    0
+                    70px;
+            }
+
+
+            .login-card {
+                padding:
+                    32px
+                    22px;
+            }
+
+
+            .club-footer-conteudo {
+                flex-direction: column;
+
+                justify-content: center;
+
+                text-align: center;
+
+                padding:
+                    30px
+                    0;
+            }
+
+        }
+
+    </style>
 
 </head>
 
 
-<body>
-
-<header class="topo">
-
-    <a
-        href="index.html"
-        class="marca"
-    >
-
-        <img
-            src="imagens/escudo/escudo.png"
-            alt="Escudo do Shelbinhos FC"
-            class="mini-escudo-img"
-        >
-
-        <div>
-
-            <strong>
-                Shelbinhos FC
-            </strong>
-
-            <small>
-                EST. 2026
-            </small>
-
-        </div>
-
-    </a>
+<body class="login-page">
 
 
-    <nav>
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-        <a href="index.html">
-            Início
-        </a>
+    <header class="club-header">
 
-        <a href="loja.html">
-            Loja
-        </a>
-
-        <a href="jogadores.html">
-            Elenco
-        </a>
-
-        <a
-            href="destaques.html"
-            class="destaque-emoji"
-            title="Highlights"
-        >
-            😈
-        </a>
-
-        <a href="carrinho.html">
-
-            Carrinho
-
-            <span class="cart-count">
-                0
-            </span>
-
-        </a>
-
-        <a
-            href="login.html"
-            class="auth-menu-link ativo"
-        >
-            Entrar
-        </a>
-
-    </nav>
-
-</header>
+        <nav class="club-nav">
 
 
-<main class="auth-page">
-
-    <section class="auth-container">
-
-        <div class="auth-box">
-
-            <p class="auth-mini-title">
-                SHELBINHOS FC
-            </p>
-
-            <h1>
-                Entrar
-            </h1>
-
-            <p class="auth-descricao">
-                Entre na sua conta para continuar.
-            </p>
-
-
-            <form
-                id="form-login"
-                class="auth-form"
+            <a
+                href="index.html"
+                class="club-marca"
             >
 
-                <div class="input-group">
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Shelbinhos FC"
+                >
+
+                <div>
+
+                    <strong>
+                        SHELBINHOS FC
+                    </strong>
+
+                    <span>
+                        MAIS QUE UM TIME
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="club-menu-btn"
+                id="club-menu-btn"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+
+            <div
+                class="club-menu"
+                id="club-menu"
+            >
+
+                <a href="index.html">
+                    INÍCIO
+                </a>
+
+                <a href="jogadores.html">
+                    ELENCO
+                </a>
+
+                <a href="highlights.html">
+                    HIGHLIGHTS
+                </a>
+
+                <a href="estatisticas.html">
+                    ESTATÍSTICAS
+                </a>
+
+                <a href="escalacao.html">
+                    ESCALAÇÃO
+                </a>
+
+                <a
+                    href="login.html"
+                    class="ativo"
+                >
+                    ENTRAR
+                </a>
+
+            </div>
+
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         LOGIN
+    ========================================== -->
+
+    <main class="login-container">
+
+
+        <!-- APRESENTAÇÃO -->
+
+        <section class="login-apresentacao">
+
+            <span>
+                ÁREA DO CLUBE
+            </span>
+
+            <h1>
+                ENTRE PARA
+                <em>A TROPA.</em>
+            </h1>
+
+            <p>
+                Acesse seu perfil e mantenha sua
+                identidade dentro do universo
+                do Shelbinhos FC.
+            </p>
+
+            <div class="login-linha"></div>
+
+            <div class="login-frase">
+                “Mesmo escudo. Mais histórias.”
+            </div>
+
+        </section>
+
+
+        <!-- FORMULÁRIO -->
+
+        <section class="login-card">
+
+
+            <div class="login-card-topo">
+
+                <span>
+                    SHELBINHOS FC
+                </span>
+
+                <h2>
+                    Entrar
+                </h2>
+
+                <p>
+                    Use seu e-mail e senha para
+                    acessar sua conta.
+                </p>
+
+            </div>
+
+
+            <form id="form-login">
+
+
+                <div class="login-campo">
 
                     <label for="login-email">
-                        E-mail
+                        E-MAIL
                     </label>
 
                     <input
                         type="email"
                         id="login-email"
-                        placeholder="seuemail@email.com"
+                        placeholder="seuemail@exemplo.com"
+                        autocomplete="email"
                         required
                     >
 
                 </div>
 
 
-                <div class="input-group">
+                <div class="login-campo">
 
                     <label for="login-senha">
-                        Senha
+                        SENHA
                     </label>
 
                     <input
                         type="password"
                         id="login-senha"
-                        placeholder="Sua senha"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
                         required
                     >
 
@@ -152,43 +953,121 @@
 
                 <button
                     type="submit"
-                    class="auth-botao"
+                    class="login-btn"
                 >
-                    Entrar
+                    ENTRAR
                 </button>
+
+
+                <p id="mensagem-auth"></p>
+
+
+                <button
+                    type="button"
+                    id="btn-reenviar"
+                >
+                    REENVIAR E-MAIL DE CONFIRMAÇÃO
+                </button>
+
 
             </form>
 
 
-            <p id="mensagem-auth"></p>
+            <div class="login-cadastro">
 
-
-            <p class="auth-link">
-
-                Ainda não possui conta?
+                <p>
+                    Ainda não faz parte?
+                </p>
 
                 <a href="cadastro.html">
-                    Criar conta
+                    CRIAR MINHA CONTA →
                 </a>
 
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="club-footer">
+
+        <div class="club-footer-conteudo">
+
+
+            <div class="club-footer-marca">
+
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Shelbinhos FC"
+                >
+
+                <strong>
+                    SHELBINHOS FC
+                </strong>
+
+            </div>
+
+
+            <p>
+                Todos juntos pelo mesmo escudo.
             </p>
+
 
         </div>
 
-    </section>
-
-</main>
+    </footer>
 
 
-<script src="js/script.js"></script>
+    <!-- =========================================
+         SCRIPTS
+         
+         NÃO ALTERAR A ORDEM.
+         É A MESMA ESTRUTURA DO LOGIN
+         QUE JÁ ESTAVA FUNCIONANDO.
+    ========================================== -->
 
-<script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script src="js/supabase.js"></script>
+    <script src="js/supabase.js"></script>
 
-<script src="js/auth.js"></script>
+    <script src="js/auth.js"></script>
+
+
+    <script>
+
+        /* APENAS MENU MOBILE */
+
+        const menuBtn =
+            document.getElementById(
+                "club-menu-btn"
+            );
+
+        const menu =
+            document.getElementById(
+                "club-menu"
+            );
+
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                menu.classList.toggle(
+                    "aberto"
+                );
+
+            }
+        );
+
+    </script>
+
 
 </body>
 

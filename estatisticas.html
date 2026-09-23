@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Estatísticas | Shelbinhos FC</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================================
+           ESTATÍSTICAS — SHELBINHOS FC
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body.stats-page {
+            margin: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(157, 128, 81, 0.13),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #17140f 0%,
+                    #080808 35%,
+                    #050505 100%
+                );
+
+            color: #eee9df;
+
+            min-height: 100vh;
+        }
+
+
+        /* CONTAINER */
+
+        .stats-container {
+            width: min(1240px, 90%);
+
+            margin: 0 auto;
+
+            padding:
+                55px
+                0
+                100px;
+        }
+
+
+        /* VOLTAR */
+
+        .stats-voltar {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 45px;
+
+            color: #87765a;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            transition: 0.2s;
+        }
+
+        .stats-voltar:hover {
+            color: #c0a16b;
+        }
+
+
+        /* =========================================
+           CABEÇALHO
+        ========================================= */
+
+        .stats-hero {
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+        .stats-hero-kicker {
+            color: #9d8051;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            letter-spacing: 5px;
+        }
+
+        .stats-hero h1 {
+            margin:
+                10px
+                0
+                12px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    42px,
+                    7vw,
+                    78px
+                );
+
+            font-weight: normal;
+
+            letter-spacing: 4px;
+        }
+
+        .stats-hero p {
+            margin: 0;
+
+            color: #77736c;
+
+            font-size: 14px;
+        }
+
+        .stats-hero-linha {
+            width: 85px;
+            height: 1px;
+
+            margin: 25px auto;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #b08d57,
+                    transparent
+                );
+        }
+
+
+        /* =========================================
+           JOGADORES
+        ========================================= */
+
+        .stats-jogadores {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 25px;
+        }
+
+        .stats-jogador-btn {
+            position: relative;
+
+            height: 190px;
+
+            padding: 0;
+
+            overflow: hidden;
+
+            background: #10100f;
+
+            border:
+                1px
+                solid
+                #29251f;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .stats-jogador-btn:hover {
+            transform:
+                translateY(-4px);
+
+            border-color:
+                #7f6843;
+        }
+
+        .stats-jogador-btn.ativo {
+            border-color:
+                #b08d57;
+
+            box-shadow:
+                0
+                0
+                0
+                1px
+                rgba(176, 141, 87, 0.15);
+        }
+
+
+        /* FOTO */
+
+        .stats-jogador-btn img {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position:
+                center top;
+
+            filter:
+                brightness(0.58)
+                saturate(0.75);
+
+            transition:
+                transform 0.35s ease,
+                filter 0.35s ease;
+        }
+
+        .stats-jogador-btn:hover img,
+        .stats-jogador-btn.ativo img {
+            transform:
+                scale(1.06);
+
+            filter:
+                brightness(0.75)
+                saturate(0.9);
+        }
+
+
+        /* SOMBRA FOTO */
+
+        .stats-jogador-btn::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(5, 5, 5, 1) 0%,
+                    rgba(5, 5, 5, 0.7) 35%,
+                    rgba(5, 5, 5, 0.08) 80%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* TEXTO CARD */
+
+        .stats-jogador-info {
+            position: absolute;
+
+            z-index: 2;
+
+            left: 17px;
+            bottom: 16px;
+
+            text-align: left;
+        }
+
+        .stats-jogador-info strong {
+            display: block;
+
+            color: #f0ebe1;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 17px;
+
+            font-weight: normal;
+
+            letter-spacing: 1px;
+        }
+
+        .stats-jogador-info span {
+            display: block;
+
+            margin-top: 5px;
+
+            color: #ad9369;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================================
+           ÁREA PRINCIPAL
+        ========================================= */
+
+        .stats-principal {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap: 20px;
+
+            align-items: stretch;
+        }
+
+
+        /* QUADRADOS */
+
+        .stats-painel {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(157, 128, 81, 0.1),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    145deg,
+                    #11100e,
+                    #080808
+                );
+
+            border:
+                1px
+                solid
+                #312b23;
+
+            border-radius: 6px;
+        }
+
+        .stats-painel::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #9d8051,
+                    #c0a16b,
+                    transparent
+                );
+        }
+
+
+        /* =========================================
+           JOGADOR SELECIONADO
+        ========================================= */
+
+        .stats-perfil {
+            min-height: 500px;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .stats-perfil-topo {
+            flex: 1;
+
+            display: grid;
+
+            grid-template-columns:
+                190px
+                1fr;
+
+            align-items: center;
+
+            gap: 30px;
+
+            padding: 40px;
+        }
+
+
+        /* FOTO GRANDE */
+
+        .stats-perfil-foto {
+            width: 190px;
+            height: 250px;
+
+            overflow: hidden;
+
+            background: #0b0b0b;
+
+            border:
+                1px
+                solid
+                #403626;
+
+            border-radius: 4px;
+        }
+
+        .stats-perfil-foto img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position:
+                center top;
+        }
+
+
+        /* INFO */
+
+        .stats-perfil-info > span {
+            color: #9d8051;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+        .stats-perfil-info h2 {
+            margin:
+                10px
+                0
+                6px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    32px,
+                    4vw,
+                    52px
+                );
+
+            font-weight: normal;
+
+            letter-spacing: 2px;
+        }
+
+        .stats-perfil-info p {
+            margin: 0;
+
+            color: #78736b;
+
+            font-size: 13px;
+        }
+
+
+        /* NÚMEROS */
+
+        .stats-numeros {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            border-top:
+                1px
+                solid
+                #29251f;
+        }
+
+        .stats-numero {
+            padding:
+                25px
+                8px;
+
+            text-align: center;
+
+            border-right:
+                1px
+                solid
+                #29251f;
+        }
+
+        .stats-numero:last-child {
+            border-right: none;
+        }
+
+        .stats-numero strong {
+            display: block;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    27px,
+                    3vw,
+                    40px
+                );
+
+            font-weight: normal;
+        }
+
+        .stats-numero span {
+            display: block;
+
+            margin-top: 8px;
+
+            color: #777169;
+
+            font-size: 8px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+        .stats-numero.destaque strong {
+            color: #c0a16b;
+        }
+
+
+        /* =========================================
+           RANKING
+        ========================================= */
+
+        .stats-ranking {
+            min-height: 500px;
+
+            padding: 35px;
+        }
+
+        .stats-ranking-header span {
+            color: #9d8051;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+        .stats-ranking-header h2 {
+            margin:
+                8px
+                0
+                23px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 31px;
+
+            font-weight: normal;
+        }
+
+
+        /* FILTROS */
+
+        .stats-ranking-filtros {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-bottom: 25px;
+        }
+
+        .stats-ranking-btn {
+            padding:
+                9px
+                13px;
+
+            background: transparent;
+
+            color: #777169;
+
+            border:
+                1px
+                solid
+                #363027;
+
+            cursor: pointer;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            transition: 0.2s;
+        }
+
+        .stats-ranking-btn:hover {
+            color: #c0a16b;
+
+            border-color:
+                #8d734b;
+        }
+
+        .stats-ranking-btn.ativo {
+            background: #9d8051;
+
+            color: #090909;
+
+            border-color:
+                #9d8051;
+        }
+
+
+        /* LINHAS RANKING */
+
+        .stats-ranking-lista {
+            border-top:
+                1px
+                solid
+                #28241e;
+        }
+
+        .stats-ranking-item {
+            display: grid;
+
+            grid-template-columns:
+                45px
+                125px
+                1fr
+                55px;
+
+            align-items: center;
+
+            min-height: 65px;
+
+            border-bottom:
+                1px
+                solid
+                #24211d;
+        }
+
+        .stats-ranking-pos {
+            color: #6d604d;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 18px;
+        }
+
+        .stats-ranking-nome {
+            color: #eae4d9;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 14px;
+        }
+
+        .stats-ranking-barra-bg {
+            height: 4px;
+
+            margin:
+                0
+                17px;
+
+            background: #201d19;
+        }
+
+        .stats-ranking-barra {
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #715a38,
+                    #c0a16b
+                );
+
+            transition:
+                width
+                0.35s ease;
+        }
+
+        .stats-ranking-valor {
+            text-align: right;
+
+            color: #c0a16b;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================
+           HISTÓRICO
+        ========================================= */
+
+        .stats-historico {
+            margin-top: 75px;
+        }
+
+        .stats-secao-titulo {
+            margin-bottom: 28px;
+        }
+
+        .stats-secao-titulo span {
+            color: #9d8051;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+        .stats-secao-titulo h2 {
+            margin:
+                8px
+                0
+                7px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 36px;
+
+            font-weight: normal;
+        }
+
+        .stats-secao-titulo p {
+            margin: 0;
+
+            color: #777169;
+
+            font-size: 13px;
+        }
+
+
+        /* CARDS TEMPORADAS */
+
+        .stats-temporadas {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .stats-temporada {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 27px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(157, 128, 81, 0.1),
+                    transparent 45%
+                ),
+                #0b0b0a;
+
+            border:
+                1px
+                solid
+                #302b24;
+
+            border-radius: 5px;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .stats-temporada:hover {
+            transform:
+                translateY(-4px);
+
+            border-color:
+                #7d6643;
+        }
+
+        .stats-temporada-topo {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .stats-temporada-tipo {
+            color: #9d8051;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+        .stats-temporada-ano {
+            color: #6d6354;
+
+            font-size: 11px;
+        }
+
+        .stats-temporada h3 {
+            min-height: 52px;
+
+            margin: 0;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 23px;
+
+            font-weight: normal;
+        }
+
+
+        /* CAMPANHA */
+
+        .stats-campanha {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            margin-top: 25px;
+
+            border-top:
+                1px
+                solid
+                #28241e;
+
+            border-bottom:
+                1px
+                solid
+                #28241e;
+        }
+
+        .stats-campanha div {
+            padding:
+                20px
+                5px;
+
+            text-align: center;
+
+            border-right:
+                1px
+                solid
+                #28241e;
+        }
+
+        .stats-campanha div:last-child {
+            border-right: none;
+        }
+
+        .stats-campanha strong {
+            display: block;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 30px;
+
+            font-weight: normal;
+        }
+
+        .stats-campanha span {
+            display: block;
+
+            margin-top: 6px;
+
+            color: #716b62;
+
+            font-size: 8px;
+
+            letter-spacing: 1px;
+        }
+
+        .stats-temporada-footer {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+
+            margin-top: 20px;
+
+            color: #786d5b;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+        }
+
+        .stats-temporada-footer strong {
+            color: #b08d57;
+        }
+
+
+        /* =========================================
+           RESPONSIVO
+        ========================================= */
+
+        @media (max-width: 1000px) {
+
+            .stats-jogadores {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .stats-principal {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .stats-temporadas {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .stats-container {
+                width: 92%;
+
+                padding-top: 30px;
+            }
+
+            .stats-jogadores {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .stats-jogador-btn {
+                height: 165px;
+            }
+
+            .stats-perfil-topo {
+                grid-template-columns:
+                    1fr;
+
+                text-align: center;
+
+                justify-items: center;
+            }
+
+            .stats-numeros {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .stats-numero {
+                border-bottom:
+                    1px
+                    solid
+                    #29251f;
+            }
+
+            .stats-ranking {
+                padding: 25px 18px;
+            }
+
+            .stats-ranking-item {
+                grid-template-columns:
+                    35px
+                    90px
+                    1fr
+                    45px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="stats-page">
+
+    <main class="stats-container">
+
+
+        <!-- VOLTAR -->
+
+        <a
+            href="index.html"
+            class="stats-voltar"
+        >
+            ← VOLTAR AO SHELBINHOS
+        </a>
+
+
+        <!-- =====================================
+             CABEÇALHO
+        ====================================== -->
+
+        <section class="stats-hero">
+
+            <span class="stats-hero-kicker">
+                SHELBINHOS FC
+            </span>
+
+            <h1>ESTATÍSTICAS</h1>
+
+            <div class="stats-hero-linha"></div>
+
+            <p>
+                Os números, recordes e campanhas da tropa.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             JOGADORES
+        ====================================== -->
+
+        <section class="stats-jogadores">
+
+
+            <button
+                class="stats-jogador-btn ativo"
+                data-jogador="rodrigues"
+            >
+
+                <img
+                    src="imagens/jogadores/rodrigues.png"
+                    alt="Rodrigues"
+                >
+
+                <div class="stats-jogador-info">
+
+                    <strong>
+                        RODRIGUES
+                    </strong>
+
+                    <span>
+                        @rdxinn
+                    </span>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="stats-jogador-btn"
+                data-jogador="gambeta"
+            >
+
+                <img
+                    src="imagens/jogadores/gambeta.png"
+                    alt="Gambeta"
+                >
+
+                <div class="stats-jogador-info">
+
+                    <strong>
+                        GAMBETA
+                    </strong>
+
+                    <span>
+                        @CezarNS
+                    </span>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="stats-jogador-btn"
+                data-jogador="collin"
+            >
+
+                <img
+                    src="imagens/jogadores/collin.png"
+                    alt="Collin"
+                >
+
+                <div class="stats-jogador-info">
+
+                    <strong>
+                        COLLIN
+                    </strong>
+
+                    <span>
+                        @Fhcg
+                    </span>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="stats-jogador-btn"
+                data-jogador="bezerra"
+            >
+
+                <img
+                    src="imagens/jogadores/bezerra.png"
+                    alt="Bezerra"
+                >
+
+                <div class="stats-jogador-info">
+
+                    <strong>
+                        BEZERRA
+                    </strong>
+
+                    <span>
+                        @Shamps
+                    </span>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="stats-jogador-btn"
+                data-jogador="exu"
+            >
+
+                <img
+                    src="imagens/jogadores/exu.png"
+                    alt="Exu"
+                >
+
+                <div class="stats-jogador-info">
+
+                    <strong>
+                        EXU
+                    </strong>
+
+                    <span>
+                        @Youngxpax
+                    </span>
+
+                </div>
+
+            </button>
+
+
+        </section>
+
+
+        <!-- =====================================
+             JOGADOR + RANKING
+        ====================================== -->
+
+        <section class="stats-principal">
+
+
+            <!-- JOGADOR SELECIONADO -->
+
+            <article class="stats-painel stats-perfil">
+
+
+                <div class="stats-perfil-topo">
+
+
+                    <div class="stats-perfil-foto">
+
+                        <img
+                            id="perfil-foto"
+                            src="imagens/jogadores/rodrigues.png"
+                            alt="Jogador selecionado"
+                        >
+
+                    </div>
+
+
+                    <div class="stats-perfil-info">
+
+                        <span>
+                            JOGADOR SELECIONADO
+                        </span>
+
+                        <h2 id="perfil-nome">
+                            RODRIGUES
+                        </h2>
+
+                        <p id="perfil-id">
+                            @rdxinn
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="stats-numeros">
+
+
+                    <div class="stats-numero">
+
+                        <strong id="stat-jogos">
+                            211
+                        </strong>
+
+                        <span>
+                            JOGOS
+                        </span>
+
+                    </div>
+
+
+                    <div class="stats-numero">
+
+                        <strong id="stat-gols">
+                            217
+                        </strong>
+
+                        <span>
+                            GOLS
+                        </span>
+
+                    </div>
+
+
+                    <div class="stats-numero">
+
+                        <strong id="stat-assistencias">
+                            97
+                        </strong>
+
+                        <span>
+                            ASSISTÊNCIAS
+                        </span>
+
+                    </div>
+
+
+                    <div class="stats-numero">
+
+                        <strong id="stat-mvp">
+                            75
+                        </strong>
+
+                        <span>
+                            MVP
+                        </span>
+
+                    </div>
+
+
+                    <div class="stats-numero destaque">
+
+                        <strong id="stat-participacoes">
+                            314
+                        </strong>
+
+                        <span>
+                            G + A
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+            <!-- RANKING -->
+
+            <article class="stats-painel stats-ranking">
+
+
+                <div class="stats-ranking-header">
+
+                    <span>
+                        DESEMPENHO
+                    </span>
+
+                    <h2>
+                        Ranking do Elenco
+                    </h2>
+
+                </div>
+
+
+                <div class="stats-ranking-filtros">
+
+
+                    <button
+                        class="stats-ranking-btn ativo"
+                        data-ranking="gols"
+                    >
+                        GOLS
+                    </button>
+
+
+                    <button
+                        class="stats-ranking-btn"
+                        data-ranking="assistencias"
+                    >
+                        ASSISTÊNCIAS
+                    </button>
+
+
+                    <button
+                        class="stats-ranking-btn"
+                        data-ranking="mvp"
+                    >
+                        MVP
+                    </button>
+
+
+                    <button
+                        class="stats-ranking-btn"
+                        data-ranking="participacoes"
+                    >
+                        G + A
+                    </button>
+
+
+                </div>
+
+
+                <div
+                    id="ranking-lista"
+                    class="stats-ranking-lista"
+                >
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =====================================
+             HISTÓRICO DO CLUBE
+        ====================================== -->
+
+        <section class="stats-historico">
+
+
+            <div class="stats-secao-titulo">
+
+                <span>
+                    SHELBINHOS FC
+                </span>
+
+                <h2>
+                    Histórico do Clube
+                </h2>
+
+                <p>
+                    Campanhas e temporadas registradas.
+                </p>
+
+            </div>
+
+
+            <div class="stats-temporadas">
+
+
+                <!-- 2026 -->
+
+                <article class="stats-temporada">
+
+
+                    <div class="stats-temporada-topo">
+
+                        <span class="stats-temporada-tipo">
+                            TEMPORADA ATUAL
+                        </span>
+
+                        <span class="stats-temporada-ano">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        EUA, CANADÁ E MÉXICO
+                    </h3>
+
+
+                    <div class="stats-campanha">
+
+
+                        <div>
+
+                            <strong>
+                                14
+                            </strong>
+
+                            <span>
+                                VITÓRIAS
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                8
+                            </strong>
+
+                            <span>
+                                EMPATES
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                11
+                            </strong>
+
+                            <span>
+                                DERROTAS
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="stats-temporada-footer">
+
+                        <span>
+                            33 PARTIDAS
+                        </span>
+
+                        <strong>
+                            42,4% VITÓRIAS
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+
+                <!-- 2030 -->
+
+                <article class="stats-temporada">
+
+
+                    <div class="stats-temporada-topo">
+
+                        <span class="stats-temporada-tipo">
+                            TEMPORADA
+                        </span>
+
+                        <span class="stats-temporada-ano">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        ESPANHA E PORTUGAL
+                    </h3>
+
+
+                    <div class="stats-campanha">
+
+
+                        <div>
+
+                            <strong>
+                                51
+                            </strong>
+
+                            <span>
+                                VITÓRIAS
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                13
+                            </strong>
+
+                            <span>
+                                EMPATES
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                45
+                            </strong>
+
+                            <span>
+                                DERROTAS
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="stats-temporada-footer">
+
+                        <span>
+                            109 PARTIDAS
+                        </span>
+
+                        <strong>
+                            46,8% VITÓRIAS
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+
+                <!-- TURNÊ -->
+
+                <article class="stats-temporada">
+
+
+                    <div class="stats-temporada-topo">
+
+                        <span class="stats-temporada-tipo">
+                            TEMPORADA
+                        </span>
+
+                        <span class="stats-temporada-ano">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        TURNÊ MUNDIAL
+                    </h3>
+
+
+                    <div class="stats-campanha">
+
+
+                        <div>
+
+                            <strong>
+                                26
+                            </strong>
+
+                            <span>
+                                VITÓRIAS
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                7
+                            </strong>
+
+                            <span>
+                                EMPATES
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                36
+                            </strong>
+
+                            <span>
+                                DERROTAS
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="stats-temporada-footer">
+
+                        <span>
+                            69 PARTIDAS
+                        </span>
+
+                        <strong>
+                            37,7% VITÓRIAS
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+        /* =========================================
+           DADOS DOS JOGADORES
+        ========================================= */
+
+        const jogadores = {
+
+            rodrigues: {
+
+                nome: "RODRIGUES",
+
+                id: "@rdxinn",
+
+                foto:
+                    "imagens/jogadores/rodrigues.png",
+
+                jogos: 211,
+
+                gols: 217,
+
+                assistencias: 97,
+
+                mvp: 75
+
+            },
+
+
+            gambeta: {
+
+                nome: "GAMBETA",
+
+                id: "@CezarNS",
+
+                foto:
+                    "imagens/jogadores/gambeta.png",
+
+                jogos: 186,
+
+                gols: 98,
+
+                assistencias: 128,
+
+                mvp: 15
+
+            },
+
+
+            collin: {
+
+                nome: "COLLIN",
+
+                id: "@Fhcg",
+
+                foto:
+                    "imagens/jogadores/collin.png",
+
+                jogos: 102,
+
+                gols: 67,
+
+                assistencias: 52,
+
+                mvp: 11
+
+            },
+
+
+            bezerra: {
+
+                nome: "BEZERRA",
+
+                id: "@Shamps",
+
+                foto:
+                    "imagens/jogadores/bezerra.png",
+
+                jogos: 65,
+
+                gols: 23,
+
+                assistencias: 23,
+
+                mvp: 8
+
+            },
+
+
+            exu: {
+
+                nome: "EXU",
+
+                id: "@Youngxpax",
+
+                foto:
+                    "imagens/jogadores/exu.png",
+
+                jogos: 18,
+
+                gols: 1,
+
+                assistencias: 4,
+
+                mvp: 0
+
+            }
+
+        };
+
+
+        /* =========================================
+           SELEÇÃO DO JOGADOR
+        ========================================= */
+
+        const jogadorBotoes =
+            document.querySelectorAll(
+                ".stats-jogador-btn"
+            );
+
+
+        const perfilFoto =
+            document.getElementById(
+                "perfil-foto"
+            );
+
+
+        const perfilNome =
+            document.getElementById(
+                "perfil-nome"
+            );
+
+
+        const perfilId =
+            document.getElementById(
+                "perfil-id"
+            );
+
+
+        const statJogos =
+            document.getElementById(
+                "stat-jogos"
+            );
+
+
+        const statGols =
+            document.getElementById(
+                "stat-gols"
+            );
+
+
+        const statAssistencias =
+            document.getElementById(
+                "stat-assistencias"
+            );
+
+
+        const statMvp =
+            document.getElementById(
+                "stat-mvp"
+            );
+
+
+        const statParticipacoes =
+            document.getElementById(
+                "stat-participacoes"
+            );
+
+
+        jogadorBotoes.forEach(
+            botao => {
+
+                botao.addEventListener(
+                    "click",
+                    () => {
+
+                        jogadorBotoes.forEach(
+                            item => {
+
+                                item.classList.remove(
+                                    "ativo"
+                                );
+
+                            }
+                        );
+
+
+                        botao.classList.add(
+                            "ativo"
+                        );
+
+
+                        const jogador =
+                            jogadores[
+                                botao.dataset.jogador
+                            ];
+
+
+                        perfilFoto.src =
+                            jogador.foto;
+
+
+                        perfilNome.textContent =
+                            jogador.nome;
+
+
+                        perfilId.textContent =
+                            jogador.id;
+
+
+                        statJogos.textContent =
+                            jogador.jogos;
+
+
+                        statGols.textContent =
+                            jogador.gols;
+
+
+                        statAssistencias.textContent =
+                            jogador.assistencias;
+
+
+                        statMvp.textContent =
+                            jogador.mvp;
+
+
+                        statParticipacoes.textContent =
+                            jogador.gols +
+                            jogador.assistencias;
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================================
+           RANKING
+        ========================================= */
+
+        const rankingLista =
+            document.getElementById(
+                "ranking-lista"
+            );
+
+
+        const rankingBotoes =
+            document.querySelectorAll(
+                ".stats-ranking-btn"
+            );
+
+
+        function criarRanking(categoria) {
+
+            const ranking =
+                Object.values(jogadores)
+
+                .map(
+                    jogador => {
+
+                        let valor;
+
+
+                        if (
+                            categoria ===
+                            "participacoes"
+                        ) {
+
+                            valor =
+                                jogador.gols +
+                                jogador.assistencias;
+
+                        }
+
+                        else {
+
+                            valor =
+                                jogador[categoria];
+
+                        }
+
+
+                        return {
+
+                            ...jogador,
+
+                            valor
+
+                        };
+
+                    }
+                )
+
+                .sort(
+                    (a, b) =>
+                        b.valor -
+                        a.valor
+                );
+
+
+            const maior =
+                ranking[0].valor;
+
+
+            rankingLista.innerHTML =
+                "";
+
+
+            ranking.forEach(
+                (jogador, index) => {
+
+                    const porcentagem =
+                        maior === 0
+                            ? 0
+                            : (
+                                jogador.valor /
+                                maior
+                            ) * 100;
+
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "stats-ranking-item";
+
+
+                    item.innerHTML = `
+
+                        <div
+                            class="stats-ranking-pos"
+                        >
+                            ${String(
+                                index + 1
+                            ).padStart(2, "0")}
+                        </div>
+
+
+                        <div
+                            class="stats-ranking-nome"
+                        >
+                            ${jogador.nome}
+                        </div>
+
+
+                        <div
+                            class="stats-ranking-barra-bg"
+                        >
+
+                            <div
+                                class="stats-ranking-barra"
+                                style="
+                                    width:
+                                    ${porcentagem}%
+                                "
+                            >
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="stats-ranking-valor"
+                        >
+                            ${jogador.valor}
+                        </div>
+
+                    `;
+
+
+                    rankingLista.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
+
+
+        rankingBotoes.forEach(
+            botao => {
+
+                botao.addEventListener(
+                    "click",
+                    () => {
+
+                        rankingBotoes.forEach(
+                            item => {
+
+                                item.classList.remove(
+                                    "ativo"
+                                );
+
+                            }
+                        );
+
+
+                        botao.classList.add(
+                            "ativo"
+                        );
+
+
+                        criarRanking(
+                            botao.dataset.ranking
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* RANKING INICIAL */
+
+        criarRanking("gols");
+
+
+    </script>
+
+
+</body>
+
+</html>
