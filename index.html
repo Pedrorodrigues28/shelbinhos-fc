@@ -5,185 +5,2117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ONG Rodrigues - Início</title>
+    <title>Shelbinhos FC</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+
+    <style>
+
+        /* =========================================
+           HOME — SHELBINHOS FC
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body.home-clube {
+            margin: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(157, 128, 81, 0.15),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    180deg,
+                    #17140f 0%,
+                    #080808 35%,
+                    #050505 100%
+                );
+
+            color: #eee9df;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .home-header {
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+
+            width: 100%;
+
+            background:
+                rgba(7, 7, 7, 0.92);
+
+            backdrop-filter:
+                blur(14px);
+
+            border-bottom:
+                1px
+                solid
+                rgba(176, 141, 87, 0.18);
+        }
+
+
+        .home-nav {
+            width:
+                min(
+                    1250px,
+                    92%
+                );
+
+            min-height: 78px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 25px;
+        }
+
+
+        /* MARCA */
+
+        .home-marca {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: #eee9df;
+        }
+
+
+        .home-marca img {
+            width: 46px;
+            height: 46px;
+
+            object-fit: contain;
+        }
+
+
+        .home-marca-texto strong {
+            display: block;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 18px;
+
+            font-weight: normal;
+
+            letter-spacing: 2px;
+        }
+
+
+        .home-marca-texto span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #8e7959;
+
+            font-size: 8px;
+
+            letter-spacing: 3px;
+        }
+
+
+        /* MENU */
+
+        .home-menu {
+            display: flex;
+
+            align-items: center;
+
+            gap: 24px;
+        }
+
+
+        .home-menu a {
+            position: relative;
+
+            padding:
+                30px
+                0;
+
+            color: #9a958c;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .home-menu a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 21px;
+
+            width: 100%;
+            height: 1px;
+
+            background: #b08d57;
+
+            transform:
+                scaleX(0);
+
+            transform-origin:
+                center;
+
+            transition:
+                transform 0.25s ease;
+        }
+
+
+        .home-menu a:hover {
+            color: #d2b27e;
+        }
+
+
+        .home-menu a:hover::after {
+            transform:
+                scaleX(1);
+        }
+
+
+        .home-menu .nav-conta {
+            padding:
+                10px
+                15px;
+
+            border:
+                1px
+                solid
+                #5f4e36;
+
+            color: #c0a16b;
+        }
+
+
+        .home-menu .nav-conta::after {
+            display: none;
+        }
+
+
+        .home-menu .nav-conta:hover {
+            border-color: #b08d57;
+
+            color: #eee9df;
+        }
+
+
+        /* MENU MOBILE */
+
+        .home-menu-btn {
+            display: none;
+
+            width: 45px;
+            height: 45px;
+
+            background: transparent;
+
+            color: #c0a16b;
+
+            border:
+                1px
+                solid
+                #42382c;
+
+            cursor: pointer;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .home-hero {
+            position: relative;
+
+            min-height: 680px;
+
+            width:
+                min(
+                    1250px,
+                    92%
+                );
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.1fr
+                0.9fr;
+
+            align-items: center;
+
+            gap: 70px;
+
+            padding:
+                90px
+                0;
+        }
+
+
+        .home-hero::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(176, 141, 87, 0.35),
+                    transparent
+                );
+        }
+
+
+        .home-hero-texto > span {
+            color: #9d8051;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 5px;
+        }
+
+
+        .home-hero h1 {
+            max-width: 760px;
+
+            margin:
+                15px
+                0
+                25px;
+
+            color: #f0ebe1;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    55px,
+                    8vw,
+                    105px
+                );
+
+            font-weight: normal;
+
+            line-height: 0.88;
+
+            letter-spacing: 2px;
+        }
+
+
+        .home-hero h1 em {
+            display: block;
+
+            color: #b08d57;
+
+            font-style: normal;
+        }
+
+
+        .home-hero-texto p {
+            max-width: 600px;
+
+            color: #817c74;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* BOTÕES */
+
+        .home-acoes {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+
+        .home-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 48px;
+
+            padding:
+                0
+                22px;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .home-btn-principal {
+            background: #9d8051;
+
+            color: #080808;
+
+            border:
+                1px
+                solid
+                #9d8051;
+        }
+
+
+        .home-btn-principal:hover {
+            background: #b99a67;
+
+            border-color: #b99a67;
+        }
+
+
+        .home-btn-secundario {
+            background: transparent;
+
+            color: #b9ac98;
+
+            border:
+                1px
+                solid
+                #3d372e;
+        }
+
+
+        .home-btn-secundario:hover {
+            color: #c0a16b;
+
+            border-color: #806a49;
+        }
+
+
+        /* ESCUDO HERO */
+
+        .home-hero-escudo {
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 480px;
+        }
+
+
+        .home-hero-escudo::before {
+            content: "";
+
+            position: absolute;
+
+            width: 390px;
+            height: 390px;
+
+            max-width: 90%;
+
+            border:
+                1px
+                solid
+                rgba(176, 141, 87, 0.22);
+
+            border-radius: 50%;
+        }
+
+
+        .home-hero-escudo::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            max-width: 72%;
+
+            border:
+                1px
+                solid
+                rgba(176, 141, 87, 0.10);
+
+            border-radius: 50%;
+        }
+
+
+        .home-hero-escudo img {
+            position: relative;
+
+            z-index: 2;
+
+            width:
+                min(
+                    330px,
+                    75%
+                );
+
+            filter:
+                drop-shadow(
+                    0
+                    25px
+                    35px
+                    rgba(0, 0, 0, 0.65)
+                );
+        }
+
+
+        /* =========================================
+           BASE DAS SEÇÕES
+        ========================================= */
+
+        .home-secao {
+            width:
+                min(
+                    1250px,
+                    92%
+                );
+
+            margin: 0 auto;
+
+            padding:
+                95px
+                0;
+        }
+
+
+        .home-secao-cabecalho {
+            max-width: 700px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .home-secao-cabecalho > span {
+            color: #9d8051;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+
+        .home-secao-cabecalho h2 {
+            margin:
+                8px
+                0
+                12px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    34px,
+                    5vw,
+                    52px
+                );
+
+            font-weight: normal;
+        }
+
+
+        .home-secao-cabecalho p {
+            margin: 0;
+
+            color: #7b766e;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           HISTÓRIA
+        ========================================= */
+
+        .home-historia {
+            display: grid;
+
+            grid-template-columns:
+                0.8fr
+                1.2fr;
+
+            gap: 65px;
+
+            align-items: center;
+        }
+
+
+        .home-historia-numero {
+            min-height: 320px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 40px;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(157, 128, 81, 0.12),
+                    transparent 50%
+                ),
+                #0c0b0a;
+
+            border:
+                1px
+                solid
+                #332d25;
+        }
+
+
+        .home-historia-numero strong {
+            color: #b08d57;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    70px,
+                    10vw,
+                    130px
+                );
+
+            font-weight: normal;
+
+            line-height: 0.9;
+        }
+
+
+        .home-historia-numero span {
+            margin-top: 15px;
+
+            color: #71695f;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+
+        .home-historia-texto h2 {
+            margin:
+                10px
+                0
+                20px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    54px
+                );
+
+            font-weight: normal;
+        }
+
+
+        .home-historia-texto > span {
+            color: #9d8051;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+
+        .home-historia-texto p {
+            color: #817b72;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================================
+           CENTRAL DO CLUBE
+        ========================================= */
+
+        .home-central-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+
+        .home-central-card {
+            position: relative;
+
+            min-height: 310px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content:
+                space-between;
+
+            padding: 32px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(157, 128, 81, 0.10),
+                    transparent 42%
+                ),
+                linear-gradient(
+                    145deg,
+                    #13110e,
+                    #090909
+                );
+
+            border:
+                1px
+                solid
+                #302a22;
+
+            text-decoration: none;
+
+            color: #eee9df;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+
+        .home-central-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #9d8051,
+                    transparent
+                );
+
+            opacity: 0;
+
+            transition:
+                opacity 0.25s ease;
+        }
+
+
+        .home-central-card:hover {
+            transform:
+                translateY(-6px);
+
+            border-color: #776140;
+        }
+
+
+        .home-central-card:hover::before {
+            opacity: 1;
+        }
+
+
+        .home-central-numero {
+            align-self:
+                flex-end;
+
+            color:
+                rgba(176, 141, 87, 0.30);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 45px;
+        }
+
+
+        .home-central-card span {
+            color: #9d8051;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+
+        .home-central-card h3 {
+            margin:
+                10px
+                0;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 29px;
+
+            font-weight: normal;
+        }
+
+
+        .home-central-card p {
+            margin: 0;
+
+            color: #756f67;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        .home-central-link {
+            margin-top: 28px;
+
+            color: #b08d57;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================================
+           ELENCO
+        ========================================= */
+
+        .home-elenco-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .home-jogador {
+            position: relative;
+
+            height: 390px;
+
+            overflow: hidden;
+
+            background: #0b0b0b;
+
+            border:
+                1px
+                solid
+                #302a22;
+
+            text-decoration: none;
+
+            color: #eee9df;
+        }
+
+
+        .home-jogador img {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position:
+                center top;
+
+            filter:
+                brightness(0.60)
+                saturate(0.75);
+
+            transition:
+                transform 0.35s ease,
+                filter 0.35s ease;
+        }
+
+
+        .home-jogador::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(5, 5, 5, 1) 0%,
+                    rgba(5, 5, 5, 0.72) 30%,
+                    transparent 70%
+                );
+        }
+
+
+        .home-jogador:hover img {
+            transform:
+                scale(1.06);
+
+            filter:
+                brightness(0.78)
+                saturate(0.9);
+        }
+
+
+        .home-jogador-info {
+            position: absolute;
+
+            z-index: 2;
+
+            left: 22px;
+            right: 22px;
+            bottom: 22px;
+        }
+
+
+        .home-jogador-info span {
+            color: #a98e65;
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        .home-jogador-info h3 {
+            margin:
+                5px
+                0
+                0;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 24px;
+
+            font-weight: normal;
+        }
+
+
+        /* =========================================
+           CHAMADA FINAL
+        ========================================= */
+
+        .home-chamada {
+            width:
+                min(
+                    1250px,
+                    92%
+                );
+
+            margin:
+                20px
+                auto
+                90px;
+
+            padding:
+                65px
+                50px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(157, 128, 81, 0.13),
+                    transparent 55%
+                ),
+                #0b0a09;
+
+            border:
+                1px
+                solid
+                #382f25;
+        }
+
+
+        .home-chamada span {
+            color: #9d8051;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+
+        .home-chamada h2 {
+            margin:
+                12px
+                auto
+                18px;
+
+            max-width: 800px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    56px
+                );
+
+            font-weight: normal;
+        }
+
+
+        .home-chamada p {
+            max-width: 650px;
+
+            margin:
+                0
+                auto
+                28px;
+
+            color: #7a756d;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .home-footer {
+            border-top:
+                1px
+                solid
+                #26221c;
+
+            background: #050505;
+        }
+
+
+        .home-footer-conteudo {
+            width:
+                min(
+                    1250px,
+                    92%
+                );
+
+            margin: 0 auto;
+
+            min-height: 150px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 30px;
+        }
+
+
+        .home-footer-marca {
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+        }
+
+
+        .home-footer-marca img {
+            width: 52px;
+            height: 52px;
+
+            object-fit: contain;
+        }
+
+
+        .home-footer-marca strong {
+            display: block;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 17px;
+
+            font-weight: normal;
+        }
+
+
+        .home-footer-marca span {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #756b5b;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .home-footer p {
+            color: #57534d;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           RESPONSIVO
+        ========================================= */
+
+        @media (max-width: 1000px) {
+
+            .home-menu {
+                position: absolute;
+
+                top: 78px;
+                left: 0;
+                right: 0;
+
+                display: none;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 0;
+
+                padding:
+                    15px
+                    5%;
+
+                background: #090909;
+
+                border-bottom:
+                    1px
+                    solid
+                    #332b22;
+            }
+
+
+            .home-menu.aberto {
+                display: flex;
+            }
+
+
+            .home-menu a {
+                padding:
+                    17px
+                    5px;
+
+                border-bottom:
+                    1px
+                    solid
+                    #1d1b18;
+            }
+
+
+            .home-menu a::after {
+                display: none;
+            }
+
+
+            .home-menu .nav-conta {
+                margin-top: 10px;
+
+                text-align: center;
+            }
+
+
+            .home-menu-btn {
+                display: block;
+            }
+
+
+            .home-hero {
+                grid-template-columns:
+                    1fr;
+
+                gap: 20px;
+
+                text-align: center;
+
+                padding-top: 70px;
+            }
+
+
+            .home-hero-texto p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .home-acoes {
+                justify-content: center;
+            }
+
+
+            .home-hero-escudo {
+                min-height: 350px;
+            }
+
+
+            .home-historia {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .home-central-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .home-elenco-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .home-nav {
+                min-height: 68px;
+            }
+
+
+            .home-menu {
+                top: 68px;
+            }
+
+
+            .home-marca img {
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .home-marca-texto strong {
+                font-size: 15px;
+            }
+
+
+            .home-hero {
+                min-height: auto;
+
+                padding:
+                    65px
+                    0;
+            }
+
+
+            .home-hero-escudo {
+                min-height: 280px;
+            }
+
+
+            .home-hero-escudo::before {
+                width: 260px;
+                height: 260px;
+            }
+
+
+            .home-hero-escudo::after {
+                width: 200px;
+                height: 200px;
+            }
+
+
+            .home-secao {
+                padding:
+                    70px
+                    0;
+            }
+
+
+            .home-elenco-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .home-jogador {
+                height: 420px;
+            }
+
+
+            .home-chamada {
+                padding:
+                    45px
+                    22px;
+            }
+
+
+            .home-footer-conteudo {
+                flex-direction: column;
+
+                justify-content: center;
+
+                text-align: center;
+
+                padding:
+                    35px
+                    0;
+            }
+
+        }
+
+    </style>
+
 </head>
 
-<body>
 
-    <header class="topo">
-        <div class="topo-conteudo">
+<body class="home-clube">
 
-            <h1>ONG RODRIGUES</h1>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="home-header">
+
+        <nav class="home-nav">
+
+
+            <a
+                href="index.html"
+                class="home-marca"
+            >
+
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Escudo Shelbinhos FC"
+                >
+
+                <div class="home-marca-texto">
+
+                    <strong>
+                        SHELBINHOS FC
+                    </strong>
+
+                    <span>
+                        FUTEBOL • AMIZADE • HISTÓRIA
+                    </span>
+
+                </div>
+
+            </a>
+
 
             <button
-                class="menu-toggle"
-                id="menuToggle"
+                class="home-menu-btn"
+                id="menu-btn"
+                type="button"
                 aria-label="Abrir menu"
-                aria-expanded="false"
-                aria-controls="menuPrincipal">
+            >
                 ☰
             </button>
 
-            <nav id="menuPrincipal" aria-label="Navegação principal">
-                <a href="index.html">Início</a>
-                <a href="projetos.html">Projetos</a>
-                <a href="cadastro.html">Cadastro</a>
-            </nav>
 
-        </div>
+            <div
+                class="home-menu"
+                id="menu"
+            >
+
+                <a href="index.html">
+                    INÍCIO
+                </a>
+
+                <a href="jogadores.html">
+                    ELENCO
+                </a>
+
+                <a href="highlights.html">
+                    HIGHLIGHTS
+                </a>
+
+                <a href="estatisticas.html">
+                    ESTATÍSTICAS
+                </a>
+
+                <a href="escalacao.html">
+                    ESCALAÇÃO
+                </a>
+
+                <a
+                    href="login.html"
+                    class="nav-conta"
+                    id="nav-entrar"
+                >
+                    ENTRAR
+                </a>
+
+                <a
+                    href="perfil.html"
+                    class="nav-conta"
+                    id="nav-perfil"
+                    style="display: none;"
+                >
+                    MEU PERFIL
+                </a>
+
+            </div>
+
+
+        </nav>
+
     </header>
 
 
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
     <main>
 
-        <section>
-            <h2>Sobre nós</h2>
 
-            <p>
-                Nossa ONG nasceu com o objetivo de ajudar pessoas e famílias que passam
-                por momentos de dificuldade. Através de ações sociais, campanhas e projetos,
-                buscamos contribuir para uma comunidade mais unida e com mais oportunidades.
-            </p>
-
-            <p>
-                Nosso trabalho depende da colaboração de voluntários, doadores e parceiros
-                que acreditam que pequenas atitudes podem causar grandes mudanças.
-                Cada ajuda recebida permite que novas ações sejam realizadas e que mais
-                pessoas possam ser atendidas.
-            </p>
-
-            <p>
-                Mais do que entregar doações, buscamos criar uma rede de apoio onde as
-                pessoas possam se sentir acolhidas, respeitadas e incentivadas a construir
-                novas oportunidades para suas vidas.
-            </p>
-
-            <img
-                src="imagens/banner.png"
-                alt="Voluntários participando de uma ação social">
-        </section>
+        <section class="home-hero">
 
 
-        <section>
-            <h2>Como ajudamos</h2>
+            <div class="home-hero-texto">
 
-            <p>
-                Nossa ONG trabalha com diferentes ações para ajudar pessoas e famílias
-                que precisam de apoio. Buscamos criar oportunidades e melhorar a qualidade
-                de vida da comunidade através de projetos sociais.
-            </p>
+                <span>
+                    MAIS QUE UM TIME
+                </span>
 
-            <p>
-                Realizamos campanhas de arrecadação de alimentos, roupas e produtos de
-                higiene, além de ações comunitárias e atividades de voluntariado.
-            </p>
+                <h1>
+                    SHELBINHOS
+                    <em>FC</em>
+                </h1>
 
-            <p>
-                Também incentivamos a participação de voluntários, porque acreditamos
-                que pequenas atitudes podem fazer uma grande diferença na vida de muitas pessoas.
-            </p>
-        </section>
+                <p>
+                    Futebol, amizade e resenha.
+                    Um clube criado dentro do jogo,
+                    mas com história, identidade e
+                    personagens que vão muito além dele.
+                </p>
 
 
-        <section>
-            <h2>Contato</h2>
+                <div class="home-acoes">
 
-            <p>E-mail: contato@ongrodrigues.com</p>
-            <p>Telefone: (11) 99999-9999</p>
-            <p>São Paulo - SP</p>
-        </section>
+                    <a
+                        href="jogadores.html"
+                        class="
+                            home-btn
+                            home-btn-principal
+                        "
+                    >
+                        CONHECER O ELENCO
+                    </a>
 
+                    <a
+                        href="estatisticas.html"
+                        class="
+                            home-btn
+                            home-btn-secundario
+                        "
+                    >
+                        VER ESTATÍSTICAS
+                    </a>
 
-        <section class="feedback-demo">
-
-            <h2>Participe das nossas ações</h2>
-
-            <p>
-                Conheça algumas áreas de atuação da nossa ONG:
-            </p>
-
-            <div class="badges-feedback">
-                <span class="badge-feedback">Voluntariado</span>
-                <span class="badge-feedback">Doações</span>
-                <span class="badge-feedback">Ação Social</span>
-            </div>
-
-            <div class="acoes-feedback">
-
-                <button class="botao-feedback" id="mostrarToast">
-                    Demonstrar interesse
-                </button>
-
-                <button class="botao-feedback" id="abrirModal">
-                    Quero participar
-                </button>
+                </div>
 
             </div>
 
-            <p class="contador-interesses" id="contadorInteresses"></p>
+
+            <div class="home-hero-escudo">
+
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Shelbinhos FC"
+                >
+
+            </div>
+
 
         </section>
+
+
+        <!-- =====================================
+             HISTÓRIA
+        ====================================== -->
+
+        <section
+            class="
+                home-secao
+                home-historia
+            "
+        >
+
+
+            <div class="home-historia-numero">
+
+                <strong>
+                    FC
+                </strong>
+
+                <span>
+                    SHELBINHOS FOOTBALL CLUB
+                </span>
+
+            </div>
+
+
+            <div class="home-historia-texto">
+
+                <span>
+                    NOSSA HISTÓRIA
+                </span>
+
+                <h2>
+                    O clube da tropa.
+                </h2>
+
+                <p>
+                    O Shelbinhos FC nasceu da resenha,
+                    das partidas entre amigos e da vontade
+                    de transformar um time do jogo em algo
+                    com identidade própria.
+                </p>
+
+                <p>
+                    Hoje o clube tem seus jogadores,
+                    uniformes, estatísticas, momentos
+                    marcantes e uma história que continua
+                    sendo construída a cada temporada.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             CENTRAL DO CLUBE
+        ====================================== -->
+
+        <section class="home-secao">
+
+
+            <div class="home-secao-cabecalho">
+
+                <span>
+                    CENTRAL DO CLUBE
+                </span>
+
+                <h2>
+                    Tudo sobre o Shelbinhos.
+                </h2>
+
+                <p>
+                    Explore os números, a formação
+                    atual e os melhores momentos do clube.
+                </p>
+
+            </div>
+
+
+            <div class="home-central-grid">
+
+
+                <!-- ESTATÍSTICAS -->
+
+                <a
+                    href="estatisticas.html"
+                    class="home-central-card"
+                >
+
+                    <div class="home-central-numero">
+                        01
+                    </div>
+
+                    <div>
+
+                        <span>
+                            NÚMEROS
+                        </span>
+
+                        <h3>
+                            Estatísticas
+                        </h3>
+
+                        <p>
+                            Jogos, gols, assistências,
+                            MVPs, ranking do elenco e
+                            histórico das temporadas.
+                        </p>
+
+                        <div class="home-central-link">
+                            ABRIR CENTRAL →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- ESCALAÇÃO -->
+
+                <a
+                    href="escalacao.html"
+                    class="home-central-card"
+                >
+
+                    <div class="home-central-numero">
+                        02
+                    </div>
+
+                    <div>
+
+                        <span>
+                            4-2-3-1
+                        </span>
+
+                        <h3>
+                            Escalação
+                        </h3>
+
+                        <p>
+                            Veja a formação do Shelbinhos,
+                            posições dos jogadores e
+                            informações do time titular.
+                        </p>
+
+                        <div class="home-central-link">
+                            VER FORMAÇÃO →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- HIGHLIGHTS -->
+
+                <a
+                    href="highlights.html"
+                    class="home-central-card"
+                >
+
+                    <div class="home-central-numero">
+                        03
+                    </div>
+
+                    <div>
+
+                        <span>
+                            MOMENTOS
+                        </span>
+
+                        <h3>
+                            Highlights
+                        </h3>
+
+                        <p>
+                            Os melhores lances, gols,
+                            jogadas e momentos registrados
+                            pelo Shelbinhos FC.
+                        </p>
+
+                        <div class="home-central-link">
+                            ASSISTIR →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             ELENCO
+        ====================================== -->
+
+        <section class="home-secao">
+
+
+            <div class="home-secao-cabecalho">
+
+                <span>
+                    ELENCO
+                </span>
+
+                <h2>
+                    Os Shelbinhos.
+                </h2>
+
+                <p>
+                    Quem entra em campo e ajuda
+                    a construir a história do clube.
+                </p>
+
+            </div>
+
+
+            <div class="home-elenco-grid">
+
+
+                <!-- RODRIGUES -->
+
+                <a
+                    href="jogadores.html"
+                    class="home-jogador"
+                >
+
+                    <img
+                        src="imagens/jogadores/rodrigues.png"
+                        alt="Rodrigues"
+                    >
+
+                    <div class="home-jogador-info">
+
+                        <span>
+                            ATA
+                        </span>
+
+                        <h3>
+                            RODRIGUES
+                        </h3>
+
+                    </div>
+
+                </a>
+
+
+                <!-- GAMBETA -->
+
+                <a
+                    href="jogadores.html"
+                    class="home-jogador"
+                >
+
+                    <img
+                        src="imagens/jogadores/gambeta.png"
+                        alt="Gambeta"
+                    >
+
+                    <div class="home-jogador-info">
+
+                        <span>
+                            MEI
+                        </span>
+
+                        <h3>
+                            GAMBETA
+                        </h3>
+
+                    </div>
+
+                </a>
+
+
+                <!-- COLLIN -->
+
+                <a
+                    href="jogadores.html"
+                    class="home-jogador"
+                >
+
+                    <img
+                        src="imagens/jogadores/collin.png"
+                        alt="Collin"
+                    >
+
+                    <div class="home-jogador-info">
+
+                        <span>
+                            ME
+                        </span>
+
+                        <h3>
+                            COLLIN
+                        </h3>
+
+                    </div>
+
+                </a>
+
+
+                <!-- BEZERRA -->
+
+                <a
+                    href="jogadores.html"
+                    class="home-jogador"
+                >
+
+                    <img
+                        src="imagens/jogadores/bezerra.png"
+                        alt="Bezerra"
+                    >
+
+                    <div class="home-jogador-info">
+
+                        <span>
+                            MD
+                        </span>
+
+                        <h3>
+                            BEZERRA
+                        </h3>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             CHAMADA FINAL
+        ====================================== -->
+
+        <section class="home-chamada">
+
+            <span>
+                SHELBINHOS FC
+            </span>
+
+            <h2>
+                Cada partida vira mais
+                um pedaço da nossa história.
+            </h2>
+
+            <p>
+                Veja a formação atual,
+                acompanhe os números do elenco
+                e relembre os melhores momentos
+                do clube.
+            </p>
+
+
+            <div class="home-acoes">
+
+                <a
+                    href="escalacao.html"
+                    class="
+                        home-btn
+                        home-btn-principal
+                    "
+                >
+                    VER ESCALAÇÃO
+                </a>
+
+                <a
+                    href="highlights.html"
+                    class="
+                        home-btn
+                        home-btn-secundario
+                    "
+                >
+                    VER HIGHLIGHTS
+                </a>
+
+            </div>
+
+        </section>
+
 
     </main>
 
 
-    <!-- TOAST -->
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
-    <div
-        class="toast-feedback"
-        id="toastFeedback"
-        role="status"
-        aria-live="polite">
+    <footer class="home-footer">
 
-        ✓ Interesse registrado com sucesso!
-
-    </div>
+        <div class="home-footer-conteudo">
 
 
-    <!-- MODAL -->
+            <div class="home-footer-marca">
 
-    <div
-        class="modal-feedback"
-        id="modalFeedback"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="tituloModal"
-        aria-hidden="true">
+                <img
+                    src="imagens/escudo/escudo.png"
+                    alt="Shelbinhos FC"
+                >
 
-        <div class="modal-conteudo">
+                <div>
 
-            <button
-                class="fechar-modal"
-                id="fecharModal"
-                aria-label="Fechar">
-                &times;
-            </button>
+                    <strong>
+                        SHELBINHOS FC
+                    </strong>
 
-            <h2 id="tituloModal">
-                Obrigado pelo interesse!
-            </h2>
+                    <span>
+                        MAIS QUE UM TIME
+                    </span>
+
+                </div>
+
+            </div>
+
 
             <p>
-                Sua intenção de participar das ações da ONG foi registrada.
+                Shelbinhos FC • Todos juntos pelo mesmo escudo.
             </p>
 
-            <button
-                class="botao-feedback"
-                id="confirmarModal">
-                Entendi
-            </button>
 
         </div>
 
-    </div>
-
-
-    <footer>
-        <p>ONG Rodrigues - Todos os direitos reservados</p>
     </footer>
+
+
+    <!-- =========================================
+         SUPABASE / CONTA
+    ========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+
+
+    <script>
+
+        /* MENU MOBILE */
+
+        const menuBtn =
+            document.getElementById(
+                "menu-btn"
+            );
+
+        const menu =
+            document.getElementById(
+                "menu"
+            );
+
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                menu.classList.toggle(
+                    "aberto"
+                );
+
+            }
+        );
+
+
+        /* FECHA MENU AO CLICAR */
+
+        document
+            .querySelectorAll(
+                ".home-menu a"
+            )
+            .forEach(
+                link => {
+
+                    link.addEventListener(
+                        "click",
+                        () => {
+
+                            menu.classList.remove(
+                                "aberto"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =========================================
+           LOGIN / PERFIL
+        ========================================= */
+
+        const navEntrar =
+            document.getElementById(
+                "nav-entrar"
+            );
+
+        const navPerfil =
+            document.getElementById(
+                "nav-perfil"
+            );
+
+
+        async function atualizarConta() {
+
+            try {
+
+                if (
+                    typeof supabaseClient ===
+                    "undefined"
+                ) {
+
+                    return;
+
+                }
+
+
+                const {
+                    data: {
+                        session
+                    }
+                } =
+                    await supabaseClient
+                        .auth
+                        .getSession();
+
+
+                if (session) {
+
+                    navEntrar.style.display =
+                        "none";
+
+                    navPerfil.style.display =
+                        "inline-flex";
+
+                }
+
+                else {
+
+                    navEntrar.style.display =
+                        "inline-flex";
+
+                    navPerfil.style.display =
+                        "none";
+
+                }
+
+            }
+
+            catch (erro) {
+
+                console.log(
+                    "Não foi possível verificar a sessão."
+                );
+
+            }
+
+        }
+
+
+        atualizarConta();
+
+    </script>
+
 
 </body>
 
